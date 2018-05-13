@@ -1,6 +1,7 @@
 package be.kdg.bhs.organizer.api;
 
 import be.kdg.bhs.organizer.dto.MessageDTO;
+import be.kdg.bhs.organizer.dto.SuitcaseMessageDTO;
 
 /**
  * @author Michael
@@ -15,7 +16,7 @@ public interface MessageConsumerListener
      * Called when a mew message is available.
      * @param messageDTO the message converted from the wire format to a DTO.
      */
-    void onReceive(MessageDTO messageDTO);
+    void onReceive(SuitcaseMessageDTO messageDTO);
 
     void onError();
 }

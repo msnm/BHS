@@ -1,5 +1,7 @@
 package be.kdg.bhs.organizer.model;
 
+import be.kdg.bhs.organizer.dto.SuitcaseMessageDTO;
+
 import java.sql.Timestamp;
 
 /**
@@ -13,6 +15,7 @@ public class Suitcase {
     private final Integer id;
     private final Integer flightNumber;
     private Integer conveyorId;
+    private Integer boardingConveyorId;
     private Timestamp date;
 
     public Suitcase(Integer id, Integer flightNumber, Integer conveyorId, Timestamp date) {
@@ -45,5 +48,13 @@ public class Suitcase {
 
     public void setDate(Timestamp date) {
         this.date = date;
+    }
+
+    public Integer getBoardingConveyorId() {
+        return boardingConveyorId;
+    }
+
+    public void setBoardingConveyorId(Integer boardingConveyorId) {
+        this.boardingConveyorId = boardingConveyorId;
     }
 }

@@ -1,0 +1,171 @@
+0    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue TEST
+1    [pool-1-thread-4] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <suitcase>
+<id>1</id>
+<flightNumber>123</flightNumber>
+<conveyorId>2</conveyorId>
+<date>19/Apr/2010:06:36:15 -0700</date>
+</suitcase>
+3    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering formatMessage(<suitcase>
+<id>1</id>
+<flightNumber>123</flightNumber>
+<conveyorId>2</conveyorId>
+<date>19/Apr/2010:06:36:15 -0700</date>
+</suitcase>)
+1    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue TEST
+2    [pool-1-thread-4] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <suitcase>
+<id>1</id>
+<flightNumber>123</flightNumber>
+<conveyorId>2</conveyorId>
+<date>19/Apr/2010:06:36:15 -0700</date>
+</suitcase>
+4    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering formatMessage(<suitcase>
+<id>1</id>
+<flightNumber>123</flightNumber>
+<conveyorId>2</conveyorId>
+<date>19/Apr/2010:06:36:15 -0700</date>
+</suitcase>)
+165  [pool-1-thread-4] ERROR com.rabbitmq.client.impl.ForgivingExceptionHandler  - Consumer be.kdg.bhs.organizer.jms.RabbitMQConsumer$1@7aa7c75c (amq.ctag-HEnTeDCCN7uoNdXVBG_Fow) method handleDelivery for channel AMQChannel(amqp://pdxgjznm@34.242.100.208:5672/pdxgjznm,1) threw an exception for channel AMQChannel(amqp://pdxgjznm@34.242.100.208:5672/pdxgjznm,1)
+java.util.IllegalFormatConversionException: d != java.lang.String
+	at java.util.Formatter$FormatSpecifier.failConversion(Formatter.java:4302)
+	at java.util.Formatter$FormatSpecifier.printInteger(Formatter.java:2793)
+	at java.util.Formatter$FormatSpecifier.print(Formatter.java:2747)
+	at java.util.Formatter.format(Formatter.java:2520)
+	at java.util.Formatter.format(Formatter.java:2455)
+	at java.lang.String.format(String.java:2940)
+	at be.kdg.bhs.organizer.dto.SuitcaseMessageDTO.toString(SuitcaseMessageDTO.java:56)
+	at be.kdg.bhs.organizer.services.RoutingServiceImpl.onReceive(RoutingServiceImpl.java:35)
+	at be.kdg.bhs.organizer.jms.RabbitMQConsumer$1.handleDelivery(RabbitMQConsumer.java:54)
+	at com.rabbitmq.client.impl.ConsumerDispatcher$5.run(ConsumerDispatcher.java:149)
+	at com.rabbitmq.client.impl.ConsumerWorkService$WorkPoolRunnable.run(ConsumerWorkService.java:100)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+0    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue TEST
+1    [pool-1-thread-4] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <suitcase>
+<id>1</id>
+<flightNumber>123</flightNumber>
+<conveyorId>2</conveyorId>
+<date>19/Apr/2010:06:36:15 -0700</date>
+</suitcase>
+3    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering formatMessage(<suitcase>
+<id>1</id>
+<flightNumber>123</flightNumber>
+<conveyorId>2</conveyorId>
+<date>19/Apr/2010:06:36:15 -0700</date>
+</suitcase>)
+112  [pool-1-thread-4] ERROR com.rabbitmq.client.impl.ForgivingExceptionHandler  - Consumer be.kdg.bhs.organizer.jms.RabbitMQConsumer$1@3440968 (amq.ctag-DWooYoeRBCKSoKeQPnOjaw) method handleDelivery for channel AMQChannel(amqp://pdxgjznm@34.242.100.208:5672/pdxgjznm,1) threw an exception for channel AMQChannel(amqp://pdxgjznm@34.242.100.208:5672/pdxgjznm,1)
+java.util.IllegalFormatConversionException: d != java.lang.String
+	at java.util.Formatter$FormatSpecifier.failConversion(Formatter.java:4302)
+	at java.util.Formatter$FormatSpecifier.printInteger(Formatter.java:2793)
+	at java.util.Formatter$FormatSpecifier.print(Formatter.java:2747)
+	at java.util.Formatter.format(Formatter.java:2520)
+	at java.util.Formatter.format(Formatter.java:2455)
+	at java.lang.String.format(String.java:2940)
+	at be.kdg.bhs.organizer.dto.SuitcaseMessageDTO.toString(SuitcaseMessageDTO.java:56)
+	at be.kdg.bhs.organizer.services.RoutingServiceImpl.onReceive(RoutingServiceImpl.java:35)
+	at be.kdg.bhs.organizer.jms.RabbitMQConsumer$1.handleDelivery(RabbitMQConsumer.java:54)
+	at com.rabbitmq.client.impl.ConsumerDispatcher$5.run(ConsumerDispatcher.java:149)
+	at com.rabbitmq.client.impl.ConsumerWorkService$WorkPoolRunnable.run(ConsumerWorkService.java:100)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+0    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue TEST
+2    [pool-1-thread-4] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <suitcase>
+<id>1</id>
+<flightNumber>123</flightNumber>
+<conveyorId>2</conveyorId>
+<date>19/Apr/2010:06:36:15 -0700</date>
+</suitcase>
+4    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering formatMessage(<suitcase>
+<id>1</id>
+<flightNumber>123</flightNumber>
+<conveyorId>2</conveyorId>
+<date>19/Apr/2010:06:36:15 -0700</date>
+</suitcase>)
+40087 [pool-1-thread-4] ERROR com.rabbitmq.client.impl.ForgivingExceptionHandler  - Consumer be.kdg.bhs.organizer.jms.RabbitMQConsumer$1@17055de6 (amq.ctag-UdteQm8Oa5Uh8vblJpilhA) method handleDelivery for channel AMQChannel(amqp://pdxgjznm@34.242.100.208:5672/pdxgjznm,1) threw an exception for channel AMQChannel(amqp://pdxgjznm@34.242.100.208:5672/pdxgjznm,1)
+java.util.IllegalFormatConversionException: d != java.lang.String
+	at java.util.Formatter$FormatSpecifier.failConversion(Formatter.java:4302)
+	at java.util.Formatter$FormatSpecifier.printInteger(Formatter.java:2793)
+	at java.util.Formatter$FormatSpecifier.print(Formatter.java:2747)
+	at java.util.Formatter.format(Formatter.java:2520)
+	at java.util.Formatter.format(Formatter.java:2455)
+	at java.lang.String.format(String.java:2940)
+	at be.kdg.bhs.organizer.dto.SuitcaseMessageDTO.toString(SuitcaseMessageDTO.java:56)
+	at be.kdg.bhs.organizer.services.RoutingServiceImpl.onReceive(RoutingServiceImpl.java:35)
+	at be.kdg.bhs.organizer.jms.RabbitMQConsumer$1.handleDelivery(RabbitMQConsumer.java:54)
+	at com.rabbitmq.client.impl.ConsumerDispatcher$5.run(ConsumerDispatcher.java:149)
+	at com.rabbitmq.client.impl.ConsumerWorkService$WorkPoolRunnable.run(ConsumerWorkService.java:100)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+0    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue TEST
+1    [pool-1-thread-4] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <suitcase>
+<id>1</id>
+<flightNumber>123</flightNumber>
+<conveyorId>2</conveyorId>
+<date>19/Apr/2010:06:36:15 -0700</date>
+</suitcase>
+4    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering formatMessage(<suitcase>
+<id>1</id>
+<flightNumber>123</flightNumber>
+<conveyorId>2</conveyorId>
+<date>19/Apr/2010:06:36:15 -0700</date>
+</suitcase>)
+0    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue TEST
+2    [pool-1-thread-4] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+    <id>1</id>
+    <flightNumber>22</flightNumber>
+    <conveyorId>2</conveyorId>
+</suitcase>
+4    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering formatMessage(<?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+    <id>1</id>
+    <flightNumber>22</flightNumber>
+    <conveyorId>2</conveyorId>
+</suitcase>)
+75182 [pool-1-thread-5] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue TEST
+75182 [pool-1-thread-5] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+    <id>1</id>
+    <flightNumber>22</flightNumber>
+    <conveyorId>2</conveyorId>
+    <date>1526208502932</date>
+</suitcase>
+75183 [pool-1-thread-5] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering formatMessage(<?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+    <id>1</id>
+    <flightNumber>22</flightNumber>
+    <conveyorId>2</conveyorId>
+    <date>1526208502932</date>
+</suitcase>)
+0    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue TEST
+1    [pool-1-thread-4] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+    <id>1</id>
+    <flightNumber>22</flightNumber>
+    <conveyorId>2</conveyorId>
+    <date>1526208502932</date>
+</suitcase>
+3    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering formatMessage(<?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+    <id>1</id>
+    <flightNumber>22</flightNumber>
+    <conveyorId>2</conveyorId>
+    <date>1526208502932</date>
+</suitcase>)
+0    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue TEST
+1    [pool-1-thread-4] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+    <id>1</id>
+    <flightNumber>22</flightNumber>
+    <conveyorId>2</conveyorId>
+    <date>1526208502932</date>
+</suitcase>
+3    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering formatMessage(<?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+    <id>1</id>
+    <flightNumber>22</flightNumber>
+    <conveyorId>2</conveyorId>
+    <date>1526208502932</date>
+</suitcase>)
