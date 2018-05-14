@@ -2,9 +2,6 @@ package be.kdg.bhs.organizer.services;
 
 import be.kdg.bhs.organizer.api.FlightService;
 import be.kdg.se3.proxy.FlightServiceProxy;
-import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.HttpResponse;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

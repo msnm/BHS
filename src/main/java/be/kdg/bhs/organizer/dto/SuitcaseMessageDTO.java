@@ -12,7 +12,7 @@ import java.util.Calendar;
 
 
 @XmlRootElement(name = "suitcase")
-public class SuitcaseMessageDTO {
+public class SuitcaseMessageDTO implements MessageDTO {
     private Integer id;
     private Integer flightNumber;
     private Integer conveyorId;

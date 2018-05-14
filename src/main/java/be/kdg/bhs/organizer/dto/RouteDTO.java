@@ -7,17 +7,20 @@ import java.util.List;
  * @project BHS
  */
 public class RouteDTO {
-    List<String> routes;
+    List<List<Integer>> routes;
 
-    public RouteDTO(List<String> routes) {
+    public RouteDTO(List<List<Integer>> routes) {
         this.routes = routes;
     }
 
-    public List<String> getRoutes() {
+    public RouteDTO() {
+    }
+
+    public List<List<Integer>> getRoutes() {
         return routes;
     }
 
-    public void setRoutes(List<String> routes) {
+    public void setRoutes(List<List<Integer>> routes) {
         this.routes = routes;
     }
 }

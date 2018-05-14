@@ -3,6 +3,7 @@ package be.kdg.bhs.organizer.jms;
 import be.kdg.bhs.organizer.api.MessageConsumerListener;
 import be.kdg.bhs.organizer.api.MessageConsumerService;
 import be.kdg.bhs.organizer.api.MessageFormatterService;
+import be.kdg.bhs.organizer.dto.SuitcaseMessageDTO;
 import com.rabbitmq.client.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,7 +52,7 @@ public class RabbitMQConsumer implements MessageConsumerService {
                     if (messageConsumerListener!=null) {
                         // TODO: Message needs to be formatted
                         // TODO: Write an exception when message formatting fails and implement onError.
-                        messageConsumerListener.onReceive(formatter.formatMessage(message));
+                        messageConsumerListener.onReceive((SuitcaseMessageDTO) formatter.formatMessage(message));
                     }
                 }
 

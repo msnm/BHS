@@ -19,13 +19,14 @@ public class RoutingServiceImpl implements MessageConsumerListener {
     private MessageConsumerService messageConsumerService;
     private MessageFormatterService messageFormatterService;
     private FlightService flightService;
+    private ConveyorService conveyorService;
 
-    public RoutingServiceImpl(MessageConsumerService messageConsumerService, MessageFormatterService messageFormatterService, FlightService flightService) {
+    public RoutingServiceImpl(MessageConsumerService messageConsumerService, MessageFormatterService messageFormatterService, FlightService flightService, ConveyorService conveyorService) {
         this.messageConsumerService = messageConsumerService;
         this.messageFormatterService = messageFormatterService;
         this.flightService = flightService;
+        this.conveyorService = conveyorService;
     }
-
 
     public void start() {
         this.messageConsumerService.initialize(this,messageFormatterService);
@@ -37,15 +38,26 @@ public class RoutingServiceImpl implements MessageConsumerListener {
         logger.info("Entered onReceive(): Suitcase {} is being processed",messageDTO.getId());
         Suitcase suitcase = DTOtoEO.suitCaseDTOtoEO(messageDTO);
 
+        System.out.println("Handling the message");
+        System.out.println(messageDTO.toString());
+
         if(flightService!=null) {
             suitcase.setBoardingConveyorId(flightService.flightInFormation(suitcase.getFlightNumber()));
+        }
+        else {
+            //TODO EXCEPTION
+        }
+
+        if(conveyorService!=null) {
+            conveyorService.routeInformation(suitcase).getRoutes().forEach(v -> System.out.println(v));
+        }
+        else {
+            //TODO EXCEPTION
         }
 
 
 
 
-        System.out.println("Handling the message");
-        System.out.println(messageDTO.toString());
     }
 
     @Override
