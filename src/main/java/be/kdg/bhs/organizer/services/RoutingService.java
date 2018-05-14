@@ -2,30 +2,33 @@ package be.kdg.bhs.organizer.services;
 
 import be.kdg.bhs.organizer.api.*;
 import be.kdg.bhs.organizer.dto.DTOtoEO;
-import be.kdg.bhs.organizer.dto.MessageDTO;
 import be.kdg.bhs.organizer.dto.SuitcaseMessageDTO;
 import be.kdg.bhs.organizer.model.Suitcase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sun.net.www.MessageHeader;
 
 /**
  * @author Michael
  * @project BHS
+ * Controller of the routing proces for incoming suitcases.
  */
-public class RoutingServiceImpl implements MessageConsumerListener {
+public class RoutingService implements MessageConsumerListener {
 
-    private Logger logger = LoggerFactory.getLogger(RoutingServiceImpl.class);
+    private Logger logger = LoggerFactory.getLogger(RoutingService.class);
     private MessageConsumerService messageConsumerService;
+    private MessageProducerService producerService;
     private MessageFormatterService messageFormatterService;
     private FlightService flightService;
     private ConveyorService conveyorService;
+    private CalculateRouteService calculateRouteService;
 
-    public RoutingServiceImpl(MessageConsumerService messageConsumerService, MessageFormatterService messageFormatterService, FlightService flightService, ConveyorService conveyorService) {
+    public RoutingService(MessageConsumerService messageConsumerService, MessageProducerService producerService, MessageFormatterService messageFormatterService, FlightService flightService, ConveyorService conveyorService, CalculateRouteService calculateRouteService) {
         this.messageConsumerService = messageConsumerService;
+        this.producerService = producerService;
         this.messageFormatterService = messageFormatterService;
         this.flightService = flightService;
         this.conveyorService = conveyorService;
+        this.calculateRouteService = calculateRouteService;
     }
 
     public void start() {
