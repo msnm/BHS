@@ -58,7 +58,7 @@ public class SuitcaseMessageDTO implements MessageDTO {
 
     @Override
     public String toString() {
-        return String.format("Id %d%n Flightnumber %d%n ConveyorId %d%n Date %s%n",
+        return String.format(" Id %d%n Flightnumber %d%n ConveyorId %d%n Date %s%n",
                 this.id, this.flightNumber, this.conveyorId, this.date);
     }
 }

@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
  */
 public class RoutingService implements MessageConsumerListener {
 
+
     private Logger logger = LoggerFactory.getLogger(RoutingService.class);
     private MessageConsumerService messageConsumerService;
     private MessageProducerService producerService;
@@ -46,6 +47,7 @@ public class RoutingService implements MessageConsumerListener {
 
         if(flightService!=null) {
             suitcase.setBoardingConveyorId(flightService.flightInFormation(suitcase.getFlightNumber()));
+            System.out.println("BoardingConveyor:" +suitcase.getBoardingConveyorId());
         }
         else {
             //TODO EXCEPTION
@@ -53,6 +55,7 @@ public class RoutingService implements MessageConsumerListener {
 
         if(conveyorService!=null) {
             conveyorService.routeInformation(suitcase).getRoutes().forEach(v -> System.out.println(v));
+            System.out.println();
         }
         else {
             //TODO EXCEPTION

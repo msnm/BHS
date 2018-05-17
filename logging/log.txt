@@ -543,3 +543,224 @@ java.lang.NullPointerException
 </suitcase>)
 33925 [pool-1-thread-4] INFO  be.kdg.bhs.organizer.services.RoutingService  - Entered onReceive(): Suitcase 1 is being processed
 50924 [pool-1-thread-4] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1234567)
+0    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue suitcaseQueue
+2    [pool-1-thread-4] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>11</conveyorId>
+<date>1526208502932</date>
+</suitcase>
+5    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering formatMessage(<?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>11</conveyorId>
+<date>1526208502932</date>
+</suitcase>)
+124  [pool-1-thread-4] INFO  be.kdg.bhs.organizer.services.RoutingService  - Entered onReceive(): Suitcase 1 is being processed
+134  [pool-1-thread-4] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1234567)
+23661 [pool-1-thread-5] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue suitcaseQueue
+23662 [pool-1-thread-5] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>11</conveyorId>
+<date>1526208502932</date>
+</suitcase>
+23662 [pool-1-thread-5] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering formatMessage(<?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>11</conveyorId>
+<date>1526208502932</date>
+</suitcase>)
+23668 [pool-1-thread-5] INFO  be.kdg.bhs.organizer.services.RoutingService  - Entered onReceive(): Suitcase 1 is being processed
+23668 [pool-1-thread-5] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1234567)
+27401 [pool-1-thread-6] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue suitcaseQueue
+27401 [pool-1-thread-6] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>11</conveyorId>
+<date>1526208502932</date>
+</suitcase>
+27401 [pool-1-thread-6] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering formatMessage(<?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>11</conveyorId>
+<date>1526208502932</date>
+</suitcase>)
+27408 [pool-1-thread-6] INFO  be.kdg.bhs.organizer.services.RoutingService  - Entered onReceive(): Suitcase 1 is being processed
+27409 [pool-1-thread-6] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1234567)
+27613 [pool-1-thread-7] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue suitcaseQueue
+27613 [pool-1-thread-7] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>11</conveyorId>
+<date>1526208502932</date>
+</suitcase>
+27613 [pool-1-thread-7] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering formatMessage(<?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>11</conveyorId>
+<date>1526208502932</date>
+</suitcase>)
+27636 [pool-1-thread-7] INFO  be.kdg.bhs.organizer.services.RoutingService  - Entered onReceive(): Suitcase 1 is being processed
+27637 [pool-1-thread-7] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1234567)
+29763 [pool-1-thread-8] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue suitcaseQueue
+29763 [pool-1-thread-8] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>11</conveyorId>
+<date>1526208502932</date>
+</suitcase>
+29763 [pool-1-thread-8] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering formatMessage(<?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>11</conveyorId>
+<date>1526208502932</date>
+</suitcase>)
+29769 [pool-1-thread-8] INFO  be.kdg.bhs.organizer.services.RoutingService  - Entered onReceive(): Suitcase 1 is being processed
+29770 [pool-1-thread-8] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1234567)
+29973 [pool-1-thread-9] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue suitcaseQueue
+29974 [pool-1-thread-9] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>11</conveyorId>
+<date>1526208502932</date>
+</suitcase>
+29974 [pool-1-thread-9] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering formatMessage(<?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>11</conveyorId>
+<date>1526208502932</date>
+</suitcase>)
+29979 [pool-1-thread-9] INFO  be.kdg.bhs.organizer.services.RoutingService  - Entered onReceive(): Suitcase 1 is being processed
+29980 [pool-1-thread-9] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1234567)
+80894 [pool-1-thread-10] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue suitcaseQueue
+80895 [pool-1-thread-10] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>11</conveyorId>
+<date>1526208502932</date>
+</suitcase>
+80895 [pool-1-thread-10] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering formatMessage(<?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>11</conveyorId>
+<date>1526208502932</date>
+</suitcase>)
+80901 [pool-1-thread-10] INFO  be.kdg.bhs.organizer.services.RoutingService  - Entered onReceive(): Suitcase 1 is being processed
+80902 [pool-1-thread-10] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1234567)
+0    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue suitcaseQueue
+9    [pool-1-thread-4] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>2</conveyorId>
+<date>1526208502932</date>
+</suitcase>
+12   [pool-1-thread-4] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering formatMessage(<?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>2</conveyorId>
+<date>1526208502932</date>
+</suitcase>)
+220  [pool-1-thread-4] INFO  be.kdg.bhs.organizer.services.RoutingService  - Entered onReceive(): Suitcase 1 is being processed
+236  [pool-1-thread-4] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1234567)
+0    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue suitcaseQueue
+9    [pool-1-thread-4] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>2</conveyorId>
+<date>1526208502932</date>
+</suitcase>
+12   [pool-1-thread-4] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering formatMessage(<?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>2</conveyorId>
+<date>1526208502932</date>
+</suitcase>)
+115  [pool-1-thread-4] INFO  be.kdg.bhs.organizer.services.RoutingService  - Entered onReceive(): Suitcase 1 is being processed
+122  [pool-1-thread-4] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1234567)
+0    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue suitcaseQueue
+2    [pool-1-thread-4] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>2</conveyorId>
+<date>1526208502932</date>
+</suitcase>
+3    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering formatMessage(<?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>2</conveyorId>
+<date>1526208502932</date>
+</suitcase>)
+113  [pool-1-thread-4] INFO  be.kdg.bhs.organizer.services.RoutingService  - Entered onReceive(): Suitcase 1 is being processed
+123  [pool-1-thread-4] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1234567)
+1353 [pool-1-thread-5] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue suitcaseQueue
+1353 [pool-1-thread-5] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>2</conveyorId>
+<date>1526208502932</date>
+</suitcase>
+1353 [pool-1-thread-5] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering formatMessage(<?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>2</conveyorId>
+<date>1526208502932</date>
+</suitcase>)
+1362 [pool-1-thread-5] INFO  be.kdg.bhs.organizer.services.RoutingService  - Entered onReceive(): Suitcase 1 is being processed
+1363 [pool-1-thread-5] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1234567)
+0    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue suitcaseQueue
+2    [pool-1-thread-4] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>2</conveyorId>
+<date>1526208502932</date>
+</suitcase>
+3    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering formatMessage(<?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>2</conveyorId>
+<date>1526208502932</date>
+</suitcase>)
+114  [pool-1-thread-4] INFO  be.kdg.bhs.organizer.services.RoutingService  - Entered onReceive(): Suitcase 1 is being processed
+124  [pool-1-thread-4] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1234567)
+1321 [pool-1-thread-5] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue suitcaseQueue
+1321 [pool-1-thread-5] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>2</conveyorId>
+<date>1526208502932</date>
+</suitcase>
+1321 [pool-1-thread-5] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering formatMessage(<?xml version="1.0" encoding="UTF-8" ?>
+<suitcase>
+<id>1</id>
+<flightNumber>1234567</flightNumber>
+<conveyorId>2</conveyorId>
+<date>1526208502932</date>
+</suitcase>)
+1326 [pool-1-thread-5] INFO  be.kdg.bhs.organizer.services.RoutingService  - Entered onReceive(): Suitcase 1 is being processed
+1327 [pool-1-thread-5] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1234567)
