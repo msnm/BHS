@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46950a51-c30c-456c-b6d6-afb1275bbbc2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/logging/log.txt" afterPath="$PROJECT_DIR$/logging/log.txt" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/Main.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/Main.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/api/CalculateRouteService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/api/CalculateRouteService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/api/ConveyorService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/api/ConveyorService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/api/FlightService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/api/FlightService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/dto/RouteDTO.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/dto/RouteDTO.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/model/Route.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/model/Route.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/repo/InMemoryRepoFactory.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/repo/InMemoryRepoFactoryImpl.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/services/ConveyorServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/services/ConveyorServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/services/FlightServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/services/FlightServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/services/RoutingService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/services/RoutingService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/utils/InMemoryCache.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/utils/InMemoryCache.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -51,8 +38,8 @@
           <file leaf-file-name="CalculateRouteService.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/api/CalculateRouteService.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="135">
-                  <caret line="9" column="3" lean-forward="false" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+                <state relative-caret-position="240">
+                  <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -983,7 +970,7 @@
       <workItem from="1526320213167" duration="7009000" />
       <workItem from="1526331264991" duration="603000" />
       <workItem from="1526397009368" duration="18987000" />
-      <workItem from="1527341960945" duration="16186000" />
+      <workItem from="1527341960945" duration="16217000" />
     </task>
     <servers />
   </component>
@@ -1020,7 +1007,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71998000" />
+    <option name="totallyTimeSpent" value="72029000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="-280" width="2560" height="1080" extended-state="0" />
@@ -1541,8 +1528,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/api/CalculateRouteService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="3" lean-forward="false" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        <state relative-caret-position="240">
+          <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
