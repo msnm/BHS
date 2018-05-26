@@ -4,8 +4,9 @@ import be.kdg.bhs.organizer.api.*;
 import be.kdg.bhs.organizer.jms.RabbitMQConsumer;
 import be.kdg.bhs.organizer.jms.RabbitMQProducer;
 import be.kdg.bhs.organizer.services.*;
-import be.kdg.bhs.organizer.utils.InMemoryCache;
-import be.kdg.se3.proxy.ConveyorServiceProxy;
+import java.util.List;
+
+import java.util.ArrayList;
 
 
 /**
@@ -20,9 +21,11 @@ public class Main {
         final String connection = "amqp://idaoxzsx:coOo7dyLae6xsQV1xyALY0XZRwq5738S@eagle.rmq.cloudamqp.com/idaoxzsx";
 
         /**
-         * Name of incomingQueue with suitcaseDTO messages
+         * Name of different queues
          */
-        final String queue = "suitcaseQueue";
+        final String suitCaseQueue = "suitcaseQueue";
+        final String routeMessageQueue="routeMessageQueue";
+        final String sensorMessageQueue="sensorMessageQueue";
 
         /**
          * MessageFormatService used to transform the incoming message protocol to a DTO object
@@ -31,10 +34,20 @@ public class Main {
         MessageFormatterService formatterService = new JAXBFormatterServiceImpl();
 
         /**
-         * MessageConsumerService which initilializes a messabroker implementation to listen to a given queue on given broker.
+         * MessageConsumerService which initilializes a messagebroker implementation to listen to a given queue on given broker.
          * Here we haven choosen RabbitMQ via cloudAMQP. Could be ActiveMQ in the future.
          */
-        MessageConsumerService consumerService = new RabbitMQConsumer(queue, connection);
+        MessageConsumerService consumerServiceForSuitcases = new RabbitMQConsumer(suitCaseQueue, connection);
+        MessageConsumerService consumerServiceForSensorMessages = new RabbitMQConsumer(suitCaseQueue, connection);
+        List<MessageConsumerService> messageConsumerServiceList = new ArrayList<>();
+        messageConsumerServiceList.add(consumerServiceForSuitcases);
+        messageConsumerServiceList.add(consumerServiceForSensorMessages);
+
+        /**
+         * MessageProducerService which initilializes a messagebroker implementation to publish to a given queue on given broker.
+         * Here we haven choosen RabbitMQ via cloudAMQP. Could be ActiveMQ in the future.
+         */
+        MessageProducerService producerService = new RabbitMQProducer(routeMessageQueue, connection);
 
         /**
          * The flightService asks the flightGate (boardingConveyorID).
@@ -46,17 +59,17 @@ public class Main {
          * The conveyorService retrieves possible routes between two conveyorIDs.
          * ConveyorService has wrapper ConveyorServiceImpl which inject ConveyourServiceProxy. A new ConveyorServiceImpl based on a restService can be used.
         */
-        ConveyorService conveyorService = new ConveyorServiceImpl(5000,200);
+        ConveyorService conveyorService = new ConveyorServiceImpl(50000,200);
 
         /**
          * CalculateRouteService calculates the optimal route for the suitcases to the boardingConveyor
          */
-        CalculateRouteService calculateRouteService = new CalculateRouteImpl();
+        CalculateRouteService calculateRouteService = new CalculateRouteServiceImpl();
 
         /**
          * RoutingService is like a controller and fungates as a callback when a message is read from a queue.
          */
-        RoutingService routingService = new RoutingService(consumerService,new RabbitMQProducer(),formatterService,flightService,conveyorService,calculateRouteService);
+        RoutingService routingService = new RoutingService(messageConsumerServiceList,producerService,formatterService,flightService,conveyorService,calculateRouteService);
         routingService.start();
 
     }

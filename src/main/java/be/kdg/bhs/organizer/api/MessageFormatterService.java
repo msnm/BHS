@@ -16,5 +16,7 @@ public interface MessageFormatterService {
      * @param message
      * @return
      */
-    MessageDTO formatMessage(String message);
+    <T> T unmarshalMessage(String message, Class<T> aClass);
+
+    <T> String marshalMessage(T aMessageDTO);
 }

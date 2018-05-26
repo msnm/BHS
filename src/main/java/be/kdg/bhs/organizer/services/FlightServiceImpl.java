@@ -27,7 +27,7 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public Integer flightInFormation(Integer flightNumber) throws FlightServiceException {
-
+        logger.info("Entering flightservice({})",flightNumber);
         JSONObject payLoad = null;
         String url = "www.services4se3.com/flightservice/";
         Integer boardingConveyorId = null;
@@ -42,7 +42,7 @@ public class FlightServiceImpl implements FlightService {
         } catch (Exception e) {
             throw new FlightServiceException(e.getMessage(),flightNumber);
         }
-
+        logger.info("End flightservice({}) with result {}",flightNumber,boardingConveyorId);
         return boardingConveyorId;
     }
 }

@@ -11,6 +11,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.StringReader;
+import java.io.StringWriter;
 
 /**
  * @author Michael
@@ -21,46 +22,54 @@ public class JAXBFormatterServiceImpl implements MessageFormatterService {
     Logger logger = LoggerFactory.getLogger(JAXBFormatterServiceImpl.class);
 
     @Override
-    public MessageDTO formatMessage(String message)  {
-        logger.info("Entering formatMessage({})",message);
-        SuitcaseMessageDTO messageDTO = new SuitcaseMessageDTO();
+    public <T> String marshalMessage(T aMessageDTO) {
+        logger.info("Entering marshalMessage({})", aMessageDTO.toString());
+        StringWriter result = new StringWriter();
 
         try {
-            messageDTO = unmarshalObject(message,messageDTO);
+            JAXBContext context = JAXBContext.newInstance(aMessageDTO.getClass());
+            Marshaller marshaller = context.createMarshaller();
+
+            marshaller.marshal(aMessageDTO,result);
+
         }
         catch (Exception e) {
             e.printStackTrace();
         }
 
-        return messageDTO;
+        logger.info("End marshalMessage({}) with result {}", aMessageDTO.toString(),result.toString());
+        return result.toString();
     }
 
     /**
      * Generic unMarshaller to unmarshal a String to a given Class.
      * @param message String
-     * @param object An object of the class that needs to be unmarshalled to
+     * @param aClazz An object of the class that needs to be unmarshalled to
      * @param <T>
      * @return
      */
 
-    private <T> T unmarshalObject(String message, T object) throws Exception {
+    @Override
+    public <T> T unmarshalMessage(String message, Class<T> aClazz) {
 
         //TODO Move this method to a UTIL class because this can be used by different classes in the far far future.
         //TODO Wright custom ExceptionHandler;
+        T object = null;
 
         try {
-            JAXBContext context = JAXBContext.newInstance(object.getClass());
+
+            JAXBContext context = JAXBContext.newInstance(aClazz);
             Unmarshaller unmarshaller = context.createUnmarshaller();
 
             StringReader reader = new StringReader(message);
 
-            object = (T) unmarshaller.unmarshal(reader);
+            object = aClazz.cast(unmarshaller.unmarshal(reader));
 
-            return object;
         } catch (JAXBException e) {
             e.printStackTrace();
-            throw new Exception(e.getMessage());
-        }
 
+        }
+        return object;
     }
+
 }

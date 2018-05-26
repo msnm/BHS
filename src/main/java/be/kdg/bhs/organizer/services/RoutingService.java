@@ -1,12 +1,14 @@
 package be.kdg.bhs.organizer.services;
 
 import be.kdg.bhs.organizer.api.*;
-import be.kdg.bhs.organizer.dto.DTOtoEO;
-import be.kdg.bhs.organizer.dto.RouteDTO;
-import be.kdg.bhs.organizer.dto.SuitcaseMessageDTO;
+import be.kdg.bhs.organizer.dto.*;
 import be.kdg.bhs.organizer.exceptions.ConveyorServiceException;
 import be.kdg.bhs.organizer.exceptions.FlightServiceException;
+import be.kdg.bhs.organizer.model.Route;
+import be.kdg.bhs.organizer.model.Routes;
+import be.kdg.bhs.organizer.model.SensorMessage;
 import be.kdg.bhs.organizer.model.Suitcase;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,16 +21,16 @@ public class RoutingService implements MessageConsumerListener {
 
 
     private Logger logger = LoggerFactory.getLogger(RoutingService.class);
-    private MessageConsumerService messageConsumerService;
-    private MessageProducerService producerService;
+    private List<MessageConsumerService> messageConsumerService;
+    private MessageProducerService messageProducerService;
     private MessageFormatterService messageFormatterService;
     private FlightService flightService;
     private ConveyorService conveyorService;
     private CalculateRouteService calculateRouteService;
 
-    public RoutingService(MessageConsumerService messageConsumerService, MessageProducerService producerService, MessageFormatterService messageFormatterService, FlightService flightService, ConveyorService conveyorService, CalculateRouteService calculateRouteService) {
+    public RoutingService(List<MessageConsumerService> messageConsumerService, MessageProducerService messageProducerService, MessageFormatterService messageFormatterService, FlightService flightService, ConveyorService conveyorService, CalculateRouteService calculateRouteService) {
         this.messageConsumerService = messageConsumerService;
-        this.producerService = producerService;
+        this.messageProducerService = messageProducerService;
         this.messageFormatterService = messageFormatterService;
         this.flightService = flightService;
         this.conveyorService = conveyorService;
@@ -36,8 +38,11 @@ public class RoutingService implements MessageConsumerListener {
     }
 
     public void start() {
-        //Activating the messageConsumer to consume from the Queue, which on his turn callbacks the onReceive and onException methods of this class.
-        this.messageConsumerService.initialize(this,messageFormatterService);
+        //Activating the messageConsumer to consume from the Queues, which on his turn callbacks the onReceive and onException methods of this class.
+        //1. Consuming suitcaseMessages
+        this.messageConsumerService.get(0).initialize(this,messageFormatterService, SuitcaseMessageDTO.class);
+        //2. Consuming sensorMessages
+        this.messageConsumerService.get(1).initialize(this,messageFormatterService, SensorMessageDTO.class);
     }
 
     /**
@@ -45,11 +50,12 @@ public class RoutingService implements MessageConsumerListener {
      * @param messageDTO the message converted from the wire format to a DTO.
      */
     @Override
-    public void onReceive(SuitcaseMessageDTO messageDTO) {
-        logger.info("Entered onReceive(): Suitcase {} is being processed", messageDTO.getId());
+    public void onReceiveSuitcase(SuitcaseMessageDTO messageDTO) {
+        logger.info("Entered onReceiveSuitcase(): Suitcase {} is being processed", messageDTO.getId());
 
         //1. Transforming an incoming SuitcaseMessageDTO to SuitCase object
         Suitcase suitcase = DTOtoEO.suitCaseDTOtoEO(messageDTO);
+        Routes routes = null;
 
         //2. Retrieving the boarding gate by calling the flightService.
         if(flightService!=null) {
@@ -71,7 +77,8 @@ public class RoutingService implements MessageConsumerListener {
         //3. Retrieving routeinformation from the ConveyorService.
         if(conveyorService!=null) {
             try {
-                RouteDTO routes = conveyorService.routeInformation(suitcase.getConveyorId(),suitcase.getBoardingConveyorId());
+                RouteDTO routesDTO = conveyorService.routeInformation(suitcase.getConveyorId(),suitcase.getBoardingConveyorId());
+                routes = DTOtoEO.routesDTOtoEO(routesDTO);
             }
             catch(ConveyorServiceException e ) {
                 logger.error("Unexpected error during call of conveyorservice: {}",e.getMessage());
@@ -84,10 +91,16 @@ public class RoutingService implements MessageConsumerListener {
         }
 
         //4. Calculating the shortest route
-        this.calculateRouteService.shortestRoute();
+        Route route = this.calculateRouteService.shortestRoute(routes);
 
+        //5. Creating a routeMessage to send to the Simulator
+        RouteMessageDTO routeMessageDTO = EOtoDTO.RouteToRouteMessageDTO(route,suitcase);
+        messageProducerService.publishMessage(routeMessageDTO,messageFormatterService);
+        logger.info("End onReceiveSuitcase(): Suitcase {} ", messageDTO.getId());
+    }
 
-
+    @Override
+    public void onReceiveSensorMessage(SensorMessageDTO messageDTO) {
 
     }
 
