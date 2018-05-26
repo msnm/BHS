@@ -6,7 +6,7 @@ import java.util.*;
 /**
  * @author Michael
  * @project BHS
- * This Class is a custom implementation for an In Memory Cache. When this class is instantiated, it will check every
+ * This Class is a custom implementation for an InMemoryCache. When this class is instantiated, it will check every
  * x seconds if the objects in het cacheMap are expired. Objects V will be removed after expiration.
  * A future improvement would be to implement the Collection interface and create an implementation of its methods.
  */
@@ -20,6 +20,9 @@ public class InMemoryCache<K, V extends CacheObject> {
 
 
     public synchronized Map<K, V> getCacheMap() {
+        if (cacheMap==null) {
+            this.cacheMap = new HashMap<>();
+        }
         return this.cacheMap;
     }
 
@@ -34,7 +37,7 @@ public class InMemoryCache<K, V extends CacheObject> {
         this.cacheMap.put(key, value);
     }
 
-    public synchronized V getCacheObject(K key) {
+    public V getCacheObject(K key) {
         if (this.cacheMap == null) {
             this.cacheMap = new HashMap<>();
         }

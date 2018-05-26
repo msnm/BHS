@@ -1,5 +1,7 @@
 package be.kdg.bhs.organizer.api;
 
+import be.kdg.bhs.organizer.exceptions.FlightServiceException;
+
 import java.util.Map;
 
 /**
@@ -11,9 +13,10 @@ public interface FlightService {
 
     /**
      *
-     * @param
+     * @param flightNumber
      * @return
+     * @throws FlightServiceException
      */
-    Integer flightInFormation(Integer flightNumber);
+    Integer flightInFormation(Integer flightNumber) throws FlightServiceException;
 
 }

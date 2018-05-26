@@ -4,8 +4,9 @@ import be.kdg.bhs.organizer.api.*;
 import be.kdg.bhs.organizer.jms.RabbitMQConsumer;
 import be.kdg.bhs.organizer.jms.RabbitMQProducer;
 import be.kdg.bhs.organizer.services.*;
+import be.kdg.bhs.organizer.utils.InMemoryCache;
 import be.kdg.se3.proxy.ConveyorServiceProxy;
-import be.kdg.se3.proxy.FlightServiceProxy;
+
 
 /**
  * Main class to parameterize and start the BHS Organizer.
@@ -39,13 +40,13 @@ public class Main {
          * The flightService asks the flightGate (boardingConveyorID).
          * FlightService has a wrapper FlightServiceImpl which inject FlightServiceProxy. A new FlightServiceImpl based on a restService can be used.
          */
-        FlightService flightService = new FlightServiceImpl(new FlightServiceProxy());
+        FlightService flightService = new FlightServiceImpl();
 
         /**
          * The conveyorService retrieves possible routes between two conveyorIDs.
          * ConveyorService has wrapper ConveyorServiceImpl which inject ConveyourServiceProxy. A new ConveyorServiceImpl based on a restService can be used.
         */
-        ConveyorService conveyorService = new ConveyorServiceImpl(new ConveyorServiceProxy());
+        ConveyorService conveyorService = new ConveyorServiceImpl(5000,200);
 
         /**
          * CalculateRouteService calculates the optimal route for the suitcases to the boardingConveyor

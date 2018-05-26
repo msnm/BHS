@@ -1,5 +1,8 @@
 package be.kdg.bhs.organizer.api;
 
+import be.kdg.bhs.organizer.model.Route;
+import be.kdg.bhs.organizer.model.Routes;
+
 /**
  * @author Michael
  * @project BHS
@@ -8,7 +11,7 @@ package be.kdg.bhs.organizer.api;
 public interface CalculateRouteService {
 
 
-    void shortestRoute();
+    Route shortestRoute(Routes route);
 
     void nextConveyourInRoute();
 }

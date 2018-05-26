@@ -1,6 +1,7 @@
 package be.kdg.bhs.organizer.api;
 
 import be.kdg.bhs.organizer.dto.RouteDTO;
+import be.kdg.bhs.organizer.exceptions.ConveyorServiceException;
 import be.kdg.bhs.organizer.model.Suitcase;
 
 /**
@@ -10,5 +11,12 @@ import be.kdg.bhs.organizer.model.Suitcase;
  */
 public interface ConveyorService {
 
-    RouteDTO routeInformation(Suitcase suitcase);
+    /**
+     *
+     * @param startConveyor the startingpoint of a route
+     * @param boardingConveyor the endpoint of the route
+     * @return
+     * @throws ConveyorServiceException
+     */
+    RouteDTO routeInformation(Integer startConveyor, Integer boardingConveyor) throws ConveyorServiceException;
 }
