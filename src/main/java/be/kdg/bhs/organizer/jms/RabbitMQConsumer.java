@@ -59,8 +59,8 @@ public class RabbitMQConsumer implements MessageConsumerService {
                             messageConsumerListener.onReceiveSuitcase((SuitcaseMessageDTO) formatter.unmarshalMessage(message,aClass));
 
                         }
-                        else if (aClass.equals((new SuitcaseMessageDTO()).getClass())) {
-                            messageConsumerListener.onReceiveSuitcase((SuitcaseMessageDTO) formatter.unmarshalMessage(message,aClass));
+                        else if (aClass.equals((new SensorMessageDTO()).getClass())) {
+                            messageConsumerListener.onReceiveSensorMessage((SensorMessageDTO) formatter.unmarshalMessage(message,aClass));
 
                         }
                         else {

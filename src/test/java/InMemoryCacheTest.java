@@ -1,4 +1,5 @@
 import be.kdg.bhs.organizer.model.Suitcase;
+import be.kdg.bhs.organizer.services.InMemoryBehaviourConveyorServiceImpl;
 import be.kdg.bhs.organizer.utils.CacheObject;
 import be.kdg.bhs.organizer.utils.InMemoryCache;
 import org.junit.Before;
@@ -29,7 +30,7 @@ public class InMemoryCacheTest {
 
     @Test
     public void expirationTester() {
-        inMemoryCache = new InMemoryCache<>(4000,1000);
+        inMemoryCache = new InMemoryCache<>(4000,1000, new InMemoryBehaviourConveyorServiceImpl());
 
         //1 second between each object
         for(Suitcase suitcase : suitcaseList) {

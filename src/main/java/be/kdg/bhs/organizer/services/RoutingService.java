@@ -9,6 +9,9 @@ import be.kdg.bhs.organizer.model.Routes;
 import be.kdg.bhs.organizer.model.SensorMessage;
 import be.kdg.bhs.organizer.model.Suitcase;
 import java.util.List;
+
+import be.kdg.bhs.organizer.utils.CacheObject;
+import be.kdg.bhs.organizer.utils.InMemoryCache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,14 +30,20 @@ public class RoutingService implements MessageConsumerListener {
     private FlightService flightService;
     private ConveyorService conveyorService;
     private CalculateRouteService calculateRouteService;
+    private InMemoryCache<Integer,CacheObject<Suitcase>> cacheOfSuitcases;
 
-    public RoutingService(List<MessageConsumerService> messageConsumerService, MessageProducerService messageProducerService, MessageFormatterService messageFormatterService, FlightService flightService, ConveyorService conveyorService, CalculateRouteService calculateRouteService) {
+    public RoutingService(List<MessageConsumerService> messageConsumerService, MessageProducerService messageProducerService,
+                          MessageFormatterService messageFormatterService, FlightService flightService,
+                          ConveyorService conveyorService, CalculateRouteService calculateRouteService,
+                          long expireTimeCacheOfSuitcases, long intervalCacheOfSuitcases) {
+
         this.messageConsumerService = messageConsumerService;
         this.messageProducerService = messageProducerService;
         this.messageFormatterService = messageFormatterService;
         this.flightService = flightService;
         this.conveyorService = conveyorService;
         this.calculateRouteService = calculateRouteService;
+        this.cacheOfSuitcases = new InMemoryCache<>(expireTimeCacheOfSuitcases,intervalCacheOfSuitcases,new InMemoryBehaviourRouteServiceImpl());
     }
 
     public void start() {
@@ -53,8 +62,10 @@ public class RoutingService implements MessageConsumerListener {
     public void onReceiveSuitcase(SuitcaseMessageDTO messageDTO) {
         logger.info("Entered onReceiveSuitcase(): Suitcase {} is being processed", messageDTO.getId());
 
-        //1. Transforming an incoming SuitcaseMessageDTO to SuitCase object
+        //1. Transforming an incoming SuitcaseMessageDTO to SuitCase object and storing it in the cacheOfSuitcases
         Suitcase suitcase = DTOtoEO.suitCaseDTOtoEO(messageDTO);
+        this.cacheOfSuitcases.putCacheObject(suitcase.getId(),new CacheObject<>(suitcase));
+
         Routes routes = null;
 
         //2. Retrieving the boarding gate by calling the flightService.

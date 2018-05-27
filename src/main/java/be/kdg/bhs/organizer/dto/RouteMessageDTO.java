@@ -10,14 +10,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="routeMessage")
 public class RouteMessageDTO {
     private Integer bagageID;
-    private Integer conveyourID;
+    private Integer conveyorID;
 
     public RouteMessageDTO() {
     }
 
     public RouteMessageDTO(Integer bagageID, Integer conveyourID) {
         this.bagageID = bagageID;
-        this.conveyourID = conveyourID;
+        this.conveyorID = conveyourID;
     }
 
     public Integer getBagageID() {
@@ -28,11 +28,11 @@ public class RouteMessageDTO {
         this.bagageID = bagageID;
     }
 
-    public Integer getConveyourID() {
-        return conveyourID;
+    public Integer getConveyorID() {
+        return conveyorID;
     }
 
-    public void setConveyourID(Integer conveyourID) {
-        this.conveyourID = conveyourID;
+    public void setConveyorID(Integer conveyorID) {
+        this.conveyorID = conveyorID;
     }
 }

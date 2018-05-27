@@ -1,6 +1,10 @@
 package be.kdg.bhs.organizer.utils;
 
 
+import be.kdg.bhs.organizer.api.InMemoryBehaviourService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.*;
 
 /**
@@ -11,11 +15,14 @@ import java.util.*;
  * A future improvement would be to implement the Collection interface and create an implementation of its methods.
  */
 public class InMemoryCache<K, V extends CacheObject> {
+    Logger logger = LoggerFactory.getLogger(InMemoryCache.class);
     private Map<K, V> cacheMap;
+    private InMemoryBehaviourService inMemoryBehaviourService;
 
-    public InMemoryCache(long expireTime, long intervalToCheck) {
+    public InMemoryCache(long expireTime, long intervalToCheck, InMemoryBehaviourService inMemoryBehaviourService) {
         //Todo Exception maken, die getrowd wordt als expireTime en intervalToCheck waarden niet logisch zijn ingevuld!
         this.start(expireTime, intervalToCheck);
+        this.inMemoryBehaviourService = inMemoryBehaviourService;
     }
 
 
@@ -53,7 +60,7 @@ public class InMemoryCache<K, V extends CacheObject> {
                 while (true) {
                     try {
                         Thread.sleep(intervalToCheck);
-                        clearExpiredObjects(expireTime);
+                        inMemoryBehaviourService.clearExpiredObjects(cacheMap,expireTime,intervalToCheck);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -66,25 +73,5 @@ public class InMemoryCache<K, V extends CacheObject> {
         thread.setDaemon(true);
         thread.start();
 
-    }
-
-    private void clearExpiredObjects(long expireTime) {
-        //As long as the map is not empty we need to check the expirationtime of the inMemoryCache objects
-        if (this.cacheMap != null) {
-
-            Iterator iterator = cacheMap.entrySet().iterator();
-            while (iterator.hasNext()) {
-                Map.Entry entry = (Map.Entry) iterator.next();
-                CacheObject<V> aCacheObject = (CacheObject<V>) entry.getValue();
-
-                //An object is expired when the delta between current time and timeEnteredCache > expireTime
-                long timeInterval = System.currentTimeMillis() - aCacheObject.getTimeEnteredCache();
-                if (timeInterval > expireTime) {
-                    System.out.println("Removed item with ID "+entry.getKey().toString()+ " on "
-                            +new Date(aCacheObject.getTimeEnteredCache())+ " after timeInterval: " +timeInterval +"ms");
-                    iterator.remove();
-                }
-            }
-        }
     }
 }

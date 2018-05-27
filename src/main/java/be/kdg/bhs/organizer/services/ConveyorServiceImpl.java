@@ -24,7 +24,7 @@ public class ConveyorServiceImpl implements ConveyorService {
 
     public ConveyorServiceImpl(long expiretimeOfCache, long intervalToCheckCache) {
         this.conveyorServiceProxy = new ConveyorServiceProxy();
-        this.cacheOfRoutes = new InMemoryCache<>(expiretimeOfCache,intervalToCheckCache);
+        this.cacheOfRoutes = new InMemoryCache<>(expiretimeOfCache,intervalToCheckCache,new InMemoryBehaviourConveyorServiceImpl());
 
     }
 

@@ -69,7 +69,8 @@ public class Main {
         /**
          * RoutingService is like a controller and fungates as a callback when a message is read from a queue.
          */
-        RoutingService routingService = new RoutingService(messageConsumerServiceList,producerService,formatterService,flightService,conveyorService,calculateRouteService);
+        RoutingService routingService = new RoutingService(messageConsumerServiceList,producerService,formatterService,
+                flightService,conveyorService,calculateRouteService,5000,200);
         routingService.start();
 
     }
