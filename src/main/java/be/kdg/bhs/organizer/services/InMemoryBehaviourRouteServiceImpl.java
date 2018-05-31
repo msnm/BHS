@@ -12,6 +12,8 @@ import java.util.Map;
 /**
  * @author Michael
  * @project BHS
+ * Implemention of {@link InMemoryBehaviourService} for the {@link be.kdg.bhs.organizer.utils.InMemoryCache} in the {@link RoutingService}.
+ * After a certain time without interaction a suitcase is lost and putted on the lostqueue.
  */
 public class InMemoryBehaviourRouteServiceImpl implements InMemoryBehaviourService{
     Logger logger = LoggerFactory.getLogger(InMemoryBehaviourRouteServiceImpl.class);
@@ -25,12 +27,12 @@ public class InMemoryBehaviourRouteServiceImpl implements InMemoryBehaviourServi
                 Map.Entry entry = (Map.Entry) iterator.next();
                 CacheObject<V> aCacheObject = (CacheObject<V>) entry.getValue();
 
-                //An object is expired when the delta between current time and timeEnteredCache > expireTime
+                //A suitcase is lost when the delta between current time and timeEnteredCache > expireTime
                 long timeInterval = System.currentTimeMillis() - aCacheObject.getTimeEnteredCache();
                 if (timeInterval > expireTime) {
-                    logger.info("Removed item with ID "+entry.getKey().toString()+ " on " +new Date(aCacheObject.getTimeEnteredCache())+ " after timeInterval: " +timeInterval +"ms");
+                    logger.info("Removed suitcase with ID because it is lost"+entry.getKey()+ " on " + new Date(aCacheObject.getTimeEnteredCache())+ " after timeInterval: " +timeInterval +"ms");
                     //Todo implementatie die ervoor zorgt dat bericht lost wordt!
-                    //iterator.remove();
+                    iterator.remove();
                 }
             }
         }

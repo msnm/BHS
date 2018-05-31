@@ -3,7 +3,6 @@ package be.kdg.bhs.organizer.dto;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.sql.Timestamp;
-import java.util.Calendar;
 
 /**
  * @author Michael
@@ -11,9 +10,9 @@ import java.util.Calendar;
  */
 
 
-@XmlRootElement(name = "suitcase")
+@XmlRootElement(name = "suitcasemessage")
 public class SuitcaseMessageDTO implements MessageDTO {
-    private Integer id;
+    private Integer suitcaseId;
     private Integer flightNumber;
     private Integer conveyorId;
 
@@ -23,8 +22,8 @@ public class SuitcaseMessageDTO implements MessageDTO {
     public SuitcaseMessageDTO() {
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setSuitcaseId(Integer suitcaseId) {
+        this.suitcaseId = suitcaseId;
     }
 
     public void setFlightNumber(Integer flightNumber) {
@@ -39,8 +38,8 @@ public class SuitcaseMessageDTO implements MessageDTO {
         this.date = date;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getSuitcaseId() {
+        return suitcaseId;
     }
 
     public Integer getFlightNumber() {
@@ -59,6 +58,6 @@ public class SuitcaseMessageDTO implements MessageDTO {
     @Override
     public String toString() {
         return String.format(" Id %d%n Flightnumber %d%n ConveyorId %d%n Date %s%n",
-                this.id, this.flightNumber, this.conveyorId, this.date);
+                this.suitcaseId, this.flightNumber, this.conveyorId, this.date);
     }
 }

@@ -38,7 +38,7 @@ public class Main {
          * Here we haven choosen RabbitMQ via cloudAMQP. Could be ActiveMQ in the future.
          */
         MessageConsumerService consumerServiceForSuitcases = new RabbitMQConsumer(suitCaseQueue, connection);
-        MessageConsumerService consumerServiceForSensorMessages = new RabbitMQConsumer(suitCaseQueue, connection);
+        MessageConsumerService consumerServiceForSensorMessages = new RabbitMQConsumer(sensorMessageQueue, connection);
         List<MessageConsumerService> messageConsumerServiceList = new ArrayList<>();
         messageConsumerServiceList.add(consumerServiceForSuitcases);
         messageConsumerServiceList.add(consumerServiceForSensorMessages);
@@ -70,7 +70,7 @@ public class Main {
          * RoutingService is like a controller and fungates as a callback when a message is read from a queue.
          */
         RoutingService routingService = new RoutingService(messageConsumerServiceList,producerService,formatterService,
-                flightService,conveyorService,calculateRouteService,5000,200);
+                flightService,conveyorService,calculateRouteService,60000,200);
         routingService.start();
 
     }

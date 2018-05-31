@@ -15,6 +15,9 @@ public class CacheObject<V> {
     }
 
     public V getCacheObject() {
+        if (cacheObject==null) {
+            return null;
+        }
         return cacheObject;
     }
 

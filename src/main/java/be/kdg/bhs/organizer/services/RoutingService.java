@@ -4,11 +4,10 @@ import be.kdg.bhs.organizer.api.*;
 import be.kdg.bhs.organizer.dto.*;
 import be.kdg.bhs.organizer.exceptions.ConveyorServiceException;
 import be.kdg.bhs.organizer.exceptions.FlightServiceException;
-import be.kdg.bhs.organizer.model.Route;
 import be.kdg.bhs.organizer.model.Routes;
-import be.kdg.bhs.organizer.model.SensorMessage;
 import be.kdg.bhs.organizer.model.Suitcase;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 import be.kdg.bhs.organizer.utils.CacheObject;
 import be.kdg.bhs.organizer.utils.InMemoryCache;
@@ -18,11 +17,14 @@ import org.slf4j.LoggerFactory;
 /**
  * @author Michael
  * @project BHS
- * Controller of the routing proces for incoming suitcases.
+ * Controls the routing process for incoming  suitcases and for incoming sensormessages.
+ * By implementing the callback interface {@link MessageConsumerListener} it listens to the
+ * messageconsumers for suitcases and sensormessages. Besides listening to messageconsumers this class
+ * is also responsible for activitating the messageconsumers.
  */
 public class RoutingService implements MessageConsumerListener {
 
-
+    private ConcurrentHashMap<Integer, Integer> conveyorTraffic;
     private Logger logger = LoggerFactory.getLogger(RoutingService.class);
     private List<MessageConsumerService> messageConsumerService;
     private MessageProducerService messageProducerService;
@@ -44,10 +46,15 @@ public class RoutingService implements MessageConsumerListener {
         this.conveyorService = conveyorService;
         this.calculateRouteService = calculateRouteService;
         this.cacheOfSuitcases = new InMemoryCache<>(expireTimeCacheOfSuitcases,intervalCacheOfSuitcases,new InMemoryBehaviourRouteServiceImpl());
+        this.conveyorTraffic = new ConcurrentHashMap<>();
+        this.calculateRouteService.setConveyorTraffic(this.conveyorTraffic);
     }
 
+    /**
+     * Activates messageConsumers to consume from the Queues for suitcases and sensormessages. The messageConsumers on their
+     * turn callback the onReceive and onException methods of this class.
+     */
     public void start() {
-        //Activating the messageConsumer to consume from the Queues, which on his turn callbacks the onReceive and onException methods of this class.
         //1. Consuming suitcaseMessages
         this.messageConsumerService.get(0).initialize(this,messageFormatterService, SuitcaseMessageDTO.class);
         //2. Consuming sensorMessages
@@ -60,15 +67,58 @@ public class RoutingService implements MessageConsumerListener {
      */
     @Override
     public void onReceiveSuitcase(SuitcaseMessageDTO messageDTO) {
-        logger.info("Entered onReceiveSuitcase(): Suitcase {} is being processed", messageDTO.getId());
+        logger.info("Entered onReceiveSuitcase(): Suitcase {} is being processed", messageDTO.getSuitcaseId());
 
         //1. Transforming an incoming SuitcaseMessageDTO to SuitCase object and storing it in the cacheOfSuitcases
         Suitcase suitcase = DTOtoEO.suitCaseDTOtoEO(messageDTO);
-        this.cacheOfSuitcases.putCacheObject(suitcase.getId(),new CacheObject<>(suitcase));
 
+        //2. Processing the suitcase. This logic is shared for sensorMessage and for suitCaseMessage
+        this.processSuitcase(suitcase);
+
+        //3. Putting the suitcase in the suitcaseCache to follow it up untill it arrived on the gate.
+        this.putSuitcaseInCache(suitcase);
+
+        logger.info("End onReceiveSuitcase(): Suitcase {} ", messageDTO.getSuitcaseId());
+    }
+
+    @Override
+    public void onReceiveSensorMessage(SensorMessageDTO messageDTO) {
+        logger.info("Entered onReceiveSensorMessage(): SensorMessage for suitcase {} is being processed", messageDTO.getBagageID());
+
+        //1. Lookup the suitcase in the suitcaseCache.
+        CacheObject<Suitcase> suitcaseCacheObject;
+        if ( (suitcaseCacheObject = cacheOfSuitcases.getCacheObject(messageDTO.getBagageID())) != null) {
+            Suitcase suitcase = suitcaseCacheObject.getCacheObject();
+            suitcase.setConveyorId(messageDTO.getConveyorId());
+            this.processSuitcase(suitcase);
+        }
+        else {
+            //TODO: Gooien een error, dat de suitcase niet bestaat. Of kunnen ervoor kiezen om dit gewoon te loggen.
+        }
+
+        logger.info("End onReceiveSensorMessage(): SensorMessage for suitcase {}", messageDTO.getBagageID());
+
+    }
+
+    @Override
+    public void onError() {
+
+    }
+
+    private void putSuitcaseInCache(Suitcase suitcase) {
+        //1. Check if suitcase exits already in inMemoryCache
+        if(cacheOfSuitcases.containsCacheObject(suitcase.getId())) {
+            logger.error("Suitcase with id {} already exists and is left out!");
+        }
+        else {
+            cacheOfSuitcases.putCacheObject(suitcase.getId(),new CacheObject<>(suitcase));
+        }
+    }
+
+    private void processSuitcase(Suitcase suitcase) {
         Routes routes = null;
 
-        //2. Retrieving the boarding gate by calling the flightService.
+        //1. Retrieving the boarding gate by calling the flightService.
         if(flightService!=null) {
             try {
                 suitcase.setBoardingConveyorId(flightService.flightInFormation(suitcase.getFlightNumber()));
@@ -102,21 +152,10 @@ public class RoutingService implements MessageConsumerListener {
         }
 
         //4. Calculating the shortest route
-        Route route = this.calculateRouteService.shortestRoute(routes);
+        Integer nextConveyorInRoute = this.calculateRouteService.nextConveyorInRoute(routes,suitcase.getConveyorId());
 
         //5. Creating a routeMessage to send to the Simulator
-        RouteMessageDTO routeMessageDTO = EOtoDTO.RouteToRouteMessageDTO(route,suitcase);
+        RouteMessageDTO routeMessageDTO = EOtoDTO.RouteToRouteMessageDTO(nextConveyorInRoute,suitcase.getId());
         messageProducerService.publishMessage(routeMessageDTO,messageFormatterService);
-        logger.info("End onReceiveSuitcase(): Suitcase {} ", messageDTO.getId());
-    }
-
-    @Override
-    public void onReceiveSensorMessage(SensorMessageDTO messageDTO) {
-
-    }
-
-    @Override
-    public void onError() {
-
     }
 }

@@ -9,8 +9,8 @@ import be.kdg.bhs.organizer.model.Suitcase;
  */
 public class EOtoDTO {
 
-    public static RouteMessageDTO RouteToRouteMessageDTO(Route route, Suitcase suitcase) {
+    public static RouteMessageDTO RouteToRouteMessageDTO(Integer nextConveyor, Integer suitcaseId) {
         //TODO logic of getting the next conveyor should not be happing in EOtoDTO class. Need to improve this.
-        return  new RouteMessageDTO(suitcase.getId(),route.getRoute().get(route.getRoute().indexOf(suitcase.getConveyorId())+1));
+        return  new RouteMessageDTO(nextConveyor, suitcaseId);
     }
 }

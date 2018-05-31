@@ -10,15 +10,22 @@ import java.util.*;
 /**
  * @author Michael
  * @project BHS
- * This Class is a custom implementation for an InMemoryCache. When this class is instantiated, it will check every
- * x seconds if the objects in het cacheMap are expired. Objects V will be removed after expiration.
- * A future improvement would be to implement the Collection interface and create an implementation of its methods.
+ * This generic Class is a custom implementation for an InMemoryCache. It caches objects which are {@link CacheObject} or
+ * extending it. The behaviour of the InMemoryCache is determined with the injection of the {@link InMemoryBehaviourService}. This makes it possible
+ * to use this specific class and let the definition of what needs to be done with expired cacheobjects differ from usecase to usecase.
  */
 public class InMemoryCache<K, V extends CacheObject> {
     Logger logger = LoggerFactory.getLogger(InMemoryCache.class);
     private Map<K, V> cacheMap;
     private InMemoryBehaviourService inMemoryBehaviourService;
+    private boolean activateCache = true;
 
+    /**
+     * Constructor to instantiate the InMemoryCache.
+     * @param expireTime time in milliseconds setting the cachetime (=expirationtime) for each Cacheobject
+     * @param intervalToCheck time in milliseconds when the secondary thread needs to execute the {@link InMemoryBehaviourService} clearExpiredObjects
+     * @param inMemoryBehaviourService defines what needs to be done with expiredobjects.
+     */
     public InMemoryCache(long expireTime, long intervalToCheck, InMemoryBehaviourService inMemoryBehaviourService) {
         //Todo Exception maken, die getrowd wordt als expireTime en intervalToCheck waarden niet logisch zijn ingevuld!
         this.start(expireTime, intervalToCheck);
@@ -35,6 +42,13 @@ public class InMemoryCache<K, V extends CacheObject> {
 
     public void setCacheMap(Map<K, V> cacheMap) {
         this.cacheMap = cacheMap;
+    }
+
+    public boolean containsCacheObject(K key) {
+        if (this.cacheMap == null) {
+            this.cacheMap = new HashMap<>();
+        }
+        return this.cacheMap.containsKey(key);
     }
 
     public void putCacheObject(K key, V value) {
@@ -54,16 +68,13 @@ public class InMemoryCache<K, V extends CacheObject> {
 
     private void start(long expireTime, long intervalToCheck) {
 
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    try {
-                        Thread.sleep(intervalToCheck);
-                        inMemoryBehaviourService.clearExpiredObjects(cacheMap,expireTime,intervalToCheck);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+        Thread thread = new Thread(() -> {
+            while (activateCache) {
+                try {
+                    Thread.sleep(intervalToCheck);
+                    inMemoryBehaviourService.clearExpiredObjects(cacheMap,expireTime,intervalToCheck);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -73,5 +84,13 @@ public class InMemoryCache<K, V extends CacheObject> {
         thread.setDaemon(true);
         thread.start();
 
+    }
+
+    public boolean isActivateCache() {
+        return activateCache;
+    }
+
+    public void setActivateCache(boolean activateCache) {
+        this.activateCache = activateCache;
     }
 }
