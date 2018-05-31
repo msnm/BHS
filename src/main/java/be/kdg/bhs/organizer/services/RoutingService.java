@@ -4,6 +4,7 @@ import be.kdg.bhs.organizer.api.*;
 import be.kdg.bhs.organizer.dto.*;
 import be.kdg.bhs.organizer.exceptions.ConveyorServiceException;
 import be.kdg.bhs.organizer.exceptions.FlightServiceException;
+import be.kdg.bhs.organizer.exceptions.RoutingException;
 import be.kdg.bhs.organizer.model.Routes;
 import be.kdg.bhs.organizer.model.Suitcase;
 import java.util.List;
@@ -33,6 +34,7 @@ public class RoutingService implements MessageConsumerListener {
     private ConveyorService conveyorService;
     private CalculateRouteService calculateRouteService;
     private InMemoryCache<Integer,CacheObject<Suitcase>> cacheOfSuitcases;
+    private int recursiveCount = 1;
 
     public RoutingService(List<MessageConsumerService> messageConsumerService, MessageProducerService messageProducerService,
                           MessageFormatterService messageFormatterService, FlightService flightService,
@@ -73,10 +75,16 @@ public class RoutingService implements MessageConsumerListener {
         Suitcase suitcase = DTOtoEO.suitCaseDTOtoEO(messageDTO);
 
         //2. Processing the suitcase. This logic is shared for sensorMessage and for suitCaseMessage
-        this.processSuitcase(suitcase);
+        try {
+            this.processSuitcase(suitcase);
+            //3. Putting the suitcase in the suitcaseCache to follow it up untill it arrived on the gate.
+            this.putSuitcaseInCache(suitcase);
+        } catch (RoutingException e) {
+            logger.error("Error while processing suitcase with id {} and errormessage {}",suitcase.getId(),e.getMessage());
 
-        //3. Putting the suitcase in the suitcaseCache to follow it up untill it arrived on the gate.
-        this.putSuitcaseInCache(suitcase);
+        }
+
+
 
         logger.info("End onReceiveSuitcase(): Suitcase {} ", messageDTO.getSuitcaseId());
     }
@@ -87,10 +95,25 @@ public class RoutingService implements MessageConsumerListener {
 
         //1. Lookup the suitcase in the suitcaseCache.
         CacheObject<Suitcase> suitcaseCacheObject;
-        if ( (suitcaseCacheObject = cacheOfSuitcases.getCacheObject(messageDTO.getBagageID())) != null) {
+        if ((suitcaseCacheObject = cacheOfSuitcases.getCacheObject(messageDTO.getBagageID())) != null) {
             Suitcase suitcase = suitcaseCacheObject.getCacheObject();
             suitcase.setConveyorId(messageDTO.getConveyorId());
-            this.processSuitcase(suitcase);
+            suitcaseCacheObject.setTimeEnteredCache(System.currentTimeMillis()); //Need to modify the time timeEntered in cache, because otherwise this object will expire, while it has to stay in the cache!
+
+            if (suitcase.getBoardingConveyorId().compareTo(suitcase.getConveyorId())==0) {
+                //When the boardingconveyor and the currentconveyor are the samen the suitcase is at its end destination.
+                //Need to send arrive message and remove the suitcase from the inmemorycache.
+                cacheOfSuitcases.removeCacheObject(suitcase.getId());
+            }
+            else {
+                try {
+                    this.processSuitcase(suitcase);
+                } catch (RoutingException e) {
+                    logger.error("Error while processing suitcase with id {} and errormessage",suitcase.getId(),e.getMessage());
+
+                }
+            }
+
         }
         else {
             //TODO: Gooien een error, dat de suitcase niet bestaat. Of kunnen ervoor kiezen om dit gewoon te loggen.
@@ -115,41 +138,14 @@ public class RoutingService implements MessageConsumerListener {
         }
     }
 
-    private void processSuitcase(Suitcase suitcase) {
+    private void processSuitcase(Suitcase suitcase) throws RoutingException {
         Routes routes = null;
 
         //1. Retrieving the boarding gate by calling the flightService.
-        if(flightService!=null) {
-            try {
-                suitcase.setBoardingConveyorId(flightService.flightInFormation(suitcase.getFlightNumber()));
-
-
-            }
-            catch (FlightServiceException e) {
-                logger.error("Unexpected error during call of flightservice: {}",e.getMessage());
-                //TODO Indien de flightservice niet bereikbaar is of een fout teruggeeft wordt later opnieuw geprobeerd deze te contacteren voor het betreffende bagagestuk
-            }
-        }
-        else {
-            //Supplying an instance of a service is crucial for the BHS, thus it is okey if this crashes the whole application when this is not provided.
-            throw new NullPointerException("No implementation for FlightService was instantiated!");
-        }
+        consultFlightService(suitcase);
 
         //3. Retrieving routeinformation from the ConveyorService.
-        if(conveyorService!=null) {
-            try {
-                RouteDTO routesDTO = conveyorService.routeInformation(suitcase.getConveyorId(),suitcase.getBoardingConveyorId());
-                routes = DTOtoEO.routesDTOtoEO(routesDTO);
-            }
-            catch(ConveyorServiceException e ) {
-                logger.error("Unexpected error during call of conveyorservice: {}",e.getMessage());
-                //TODO Indien de conveyorservice niet bereikbaar is of een fout teruggeeft wordt later opnieuw geprobeerd deze te contacteren voor het betreffende bagagestuk
-            }
-        }
-        else {
-            //Supplying an instance of a service is crucial for the BHS, thus it is okey if this crashes the whole application when this is not provided.
-            throw new NullPointerException("No implementation for FlightService was instantiated!");
-        }
+        routes = consultConveyorService(suitcase, routes);
 
         //4. Calculating the shortest route
         Integer nextConveyorInRoute = this.calculateRouteService.nextConveyorInRoute(routes,suitcase.getConveyorId());
@@ -157,5 +153,55 @@ public class RoutingService implements MessageConsumerListener {
         //5. Creating a routeMessage to send to the Simulator
         RouteMessageDTO routeMessageDTO = EOtoDTO.RouteToRouteMessageDTO(nextConveyorInRoute,suitcase.getId());
         messageProducerService.publishMessage(routeMessageDTO,messageFormatterService);
+    }
+
+    private Routes consultConveyorService(Suitcase suitcase, Routes routes) throws RoutingException {
+        if(conveyorService!=null) {
+            try {
+                RouteDTO routesDTO = conveyorService.routeInformation(suitcase.getConveyorId(),suitcase.getBoardingConveyorId());
+                routes = DTOtoEO.routesDTOtoEO(routesDTO);
+            }
+            catch(ConveyorServiceException e ) {
+                logger.error("Unexpected error during call of conveyorservice: {}. Attempting a recursive call for suitcase {}",e.getMessage(),suitcase.getId());
+                if (recursiveCount++<2) {
+                    consultConveyorService(suitcase,routes); //Indien de conveyorservice niet bereikbaar is of een fout teruggeeft wordt later opnieuw geprobeerd deze te contacteren voor het betreffende bagagestuk
+                }
+                else {
+                    recursiveCount=0;
+                    //this.onError();
+                    throw new RoutingException(e.getMessage());
+                }
+            }
+        }
+        else {
+            //Supplying an instance of a service is crucial for the BHS, thus it is okey if this crashes the whole application when this is not provided.
+            throw new NullPointerException("No implementation for FlightService was instantiated!");
+        }
+        return routes;
+    }
+
+    private void consultFlightService(Suitcase suitcase) throws RoutingException {
+
+        if(flightService!=null) {
+            try {
+                suitcase.setBoardingConveyorId(flightService.flightInFormation(suitcase.getFlightNumber()));
+
+
+            }
+            catch (FlightServiceException e) {
+                logger.error("Unexpected error during call of flightservice: {}.Attempting a recursive call for suitcase {}",e.getMessage(),suitcase.getId());
+                if (recursiveCount++<2) {
+                    consultFlightService(suitcase); //Indien de flightservice niet bereikbaar is of een fout teruggeeft wordt later opnieuw geprobeerd deze te contacteren voor het betreffende bagagestuk
+                }
+                else {
+                    recursiveCount=0;
+                    throw new RoutingException(e.getMessage());
+                }
+            }
+        }
+        else {
+            //Supplying an instance of a service is crucial for the BHS, thus it is okey if this crashes the whole application when this is not provided.
+            throw new NullPointerException("No implementation for FlightService was instantiated!");
+        }
     }
 }

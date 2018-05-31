@@ -1,69 +1,44 @@
-0    [AMQP Connection 34.230.84.117:5672] WARN  com.rabbitmq.client.impl.ForgivingExceptionHandler  - An unexpected connection driver error occured (Exception message: Socket closed)
-0    [pool-1-thread-4] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue suitcaseQueue
-2    [pool-1-thread-4] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <?xml version="1.0" encoding="UTF-8" ?>
-<suitcasemessage>
-<suitcaseId>1</suitcaseId>
-<flightNumber>1111111</flightNumber>
-<conveyorId>11</conveyorId>
-<date>1526208502932</date>
+1    [Thread-2] DEBUG be.kdg.bhs.organizer.jms.ConsumerLogic  - Message content: <suitcasemessage><suitcaseId>1</suitcaseId><flightNumber>1111111</flightNumber>
+<conveyorId>11</conveyorId><date>2018-05-31 23:37:51.276</date>
 </suitcasemessage>
-126  [pool-1-thread-4] INFO  be.kdg.bhs.organizer.services.RoutingService  - Entered onReceiveSuitcase(): Suitcase 1 is being processed
-127  [pool-1-thread-4] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightservice(1111111)
-127  [pool-1-thread-4] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1111111)
-252  [pool-1-thread-4] INFO  be.kdg.bhs.organizer.api.FlightService  - End flightservice(1111111) with result 41
-252  [pool-1-thread-4] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered routeInformation(11,41)
-362  [pool-1-thread-4] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - End routeInformation(11,41) returned routes Route: [11, 21, 41]
-363  [pool-1-thread-4] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - Entered nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@cc44088,11)
-370  [pool-1-thread-4] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - End nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@cc44088,11) with the optimalroute be.kdg.bhs.organizer.model.Route@195b50aa and nextconveyor 21
-5650 [AMQP Connection 34.230.84.117:5672] WARN  com.rabbitmq.client.impl.ForgivingExceptionHandler  - An unexpected connection driver error occured (Exception message: Socket closed)
-5652 [pool-1-thread-4] INFO  be.kdg.bhs.organizer.services.RoutingService  - End onReceiveSuitcase(): Suitcase 1 
-13099 [pool-1-thread-5] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue suitcaseQueue
-13099 [pool-1-thread-5] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <?xml version="1.0" encoding="UTF-8" ?>
-<suitcasemessage>
-<suitcaseId>1</suitcaseId>
-<flightNumber>1111111</flightNumber>
-<conveyorId>11</conveyorId>
-<date>1526208502932</date>
+150  [Thread-2] INFO  be.kdg.bhs.organizer.services.RoutingService  - Entered onReceiveSuitcase(): Suitcase 1 is being processed
+151  [Thread-2] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightservice(1111111)
+151  [Thread-2] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1111111)
+298  [Thread-2] INFO  be.kdg.bhs.organizer.api.FlightService  - End flightservice(1111111) with result 41
+298  [Thread-2] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered routeInformation(11,41)
+413  [Thread-2] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - End routeInformation(11,41) returned routes Route: [11, 21, 41]
+416  [Thread-2] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - Entered nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@70cd271b,11)
+434  [Thread-2] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - End nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@70cd271b,11) with the optimalroute be.kdg.bhs.organizer.model.Route@8a81804 and nextconveyor 21
+5989 [AMQP Connection 34.230.84.117:5672] WARN  com.rabbitmq.client.impl.ForgivingExceptionHandler  - An unexpected connection driver error occured (Exception message: Socket closed)
+5990 [Thread-2] INFO  be.kdg.bhs.organizer.services.RoutingService  - End onReceiveSuitcase(): Suitcase 1 
+6041 [Thread-2] DEBUG be.kdg.bhs.organizer.jms.ConsumerLogic  - Message content: <suitcasemessage><suitcaseId>2</suitcaseId><flightNumber>1111112</flightNumber>
+<conveyorId>11</conveyorId><date>2018-05-31 23:37:51.289</date>
 </suitcasemessage>
-13123 [pool-1-thread-5] INFO  be.kdg.bhs.organizer.services.RoutingService  - Entered onReceiveSuitcase(): Suitcase 1 is being processed
-13124 [pool-1-thread-5] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightservice(1111111)
-13124 [pool-1-thread-5] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1111111)
-13226 [pool-1-thread-5] INFO  be.kdg.bhs.organizer.api.FlightService  - End flightservice(1111111) with result 41
-13226 [pool-1-thread-5] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered routeInformation(11,41)
-13226 [pool-1-thread-5] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - End routeInformation(11,41) returned routes Route: [11, 21, 41]
-13227 [pool-1-thread-5] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - Entered nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@3662bfd6,11)
-13227 [pool-1-thread-5] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - End nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@3662bfd6,11) with the optimalroute be.kdg.bhs.organizer.model.Route@7360277e and nextconveyor 21
-19021 [pool-1-thread-5] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering marshalMessage(be.kdg.bhs.organizer.dto.RouteMessageDTO@61e648a4)
-19045 [pool-1-thread-5] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - End marshalMessage(be.kdg.bhs.organizer.dto.RouteMessageDTO@61e648a4) with result <?xml version="1.0" encoding="UTF-8" standalone="yes"?><routeMessage><bagageID>21</bagageID><conveyorID>1</conveyorID></routeMessage>
-22009 [pool-1-thread-5] ERROR be.kdg.bhs.organizer.services.RoutingService  - Suitcase with id {} already exists and is left out!
-22009 [pool-1-thread-5] INFO  be.kdg.bhs.organizer.services.RoutingService  - End onReceiveSuitcase(): Suitcase 1 
-45820 [pool-3-thread-4] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue sensorMessageQueue
-45820 [pool-3-thread-4] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <?xml version="1.0" encoding="UTF-8" ?>
-<sensormessage>
-    <suitcaseId>1</suitcaseId>
-    <conveyorId>21</conveyorId>
-    <date>1526208502932</date>
-</sensormessage>
-45830 [pool-3-thread-4] INFO  be.kdg.bhs.organizer.services.RoutingService  - Entered onReceiveSensorMessage(): SensorMessage for suitcase 1 is being processed
-45830 [pool-3-thread-4] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightservice(1111111)
-45830 [pool-3-thread-4] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1111111)
-45933 [pool-3-thread-4] INFO  be.kdg.bhs.organizer.api.FlightService  - End flightservice(1111111) with result 41
-45933 [pool-3-thread-4] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered routeInformation(21,41)
-46037 [pool-3-thread-4] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - End routeInformation(21,41) returned routes Route: [21, 41]
-46037 [pool-3-thread-4] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - Entered nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@37fb98f1,21)
-46037 [pool-3-thread-4] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - End nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@37fb98f1,21) with the optimalroute be.kdg.bhs.organizer.model.Route@6fe5e5e and nextconveyor 41
-50417 [Thread-0] INFO  be.kdg.bhs.organizer.services.InMemoryBehaviourConveyorServiceImpl  - Removed item with ID 11-41 on Thu May 31 18:50:07 CEST 2018 after timeInterval: 50051ms
-50557 [pool-3-thread-4] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering marshalMessage(be.kdg.bhs.organizer.dto.RouteMessageDTO@33b543a3)
-50569 [pool-3-thread-4] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - End marshalMessage(be.kdg.bhs.organizer.dto.RouteMessageDTO@33b543a3) with result <?xml version="1.0" encoding="UTF-8" standalone="yes"?><routeMessage><bagageID>41</bagageID><conveyorID>1</conveyorID></routeMessage>
-51325 [pool-3-thread-4] INFO  be.kdg.bhs.organizer.services.RoutingService  - End onReceiveSensorMessage(): SensorMessage for suitcase 1
-65851 [Thread-1] INFO  be.kdg.bhs.organizer.services.InMemoryBehaviourRouteServiceImpl  - Removed suitcase with ID because it is lost1 on Thu May 31 18:50:13 CEST 2018 after timeInterval: 60198ms
-74164 [pool-3-thread-5] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue sensorMessageQueue
-74165 [pool-3-thread-5] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Message content: <?xml version="1.0" encoding="UTF-8" ?>
-<sensormessage>
-    <suitcaseId>1</suitcaseId>
-    <conveyorId>41</conveyorId>
-    <date>1526208502932</date>
-</sensormessage>
-74183 [pool-3-thread-5] INFO  be.kdg.bhs.organizer.services.RoutingService  - Entered onReceiveSensorMessage(): SensorMessage for suitcase 1 is being processed
-74184 [pool-3-thread-5] INFO  be.kdg.bhs.organizer.services.RoutingService  - End onReceiveSensorMessage(): SensorMessage for suitcase 1
-96057 [Thread-0] INFO  be.kdg.bhs.organizer.services.InMemoryBehaviourConveyorServiceImpl  - Removed item with ID 21-41 on Thu May 31 18:50:53 CEST 2018 after timeInterval: 50020ms
+6047 [Thread-2] INFO  be.kdg.bhs.organizer.services.RoutingService  - Entered onReceiveSuitcase(): Suitcase 2 is being processed
+6047 [Thread-2] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightservice(1111112)
+6047 [Thread-2] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1111112)
+6148 [Thread-2] INFO  be.kdg.bhs.organizer.api.FlightService  - End flightservice(1111112) with result 42
+6148 [Thread-2] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered routeInformation(11,42)
+6252 [Thread-2] ERROR be.kdg.bhs.organizer.services.RoutingService  - Unexpected error during call of conveyorservice: JSONObject["routes"] not found.. Attempting a recursive call for suitcase 2
+6252 [Thread-2] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered routeInformation(11,42)
+6357 [Thread-2] ERROR be.kdg.bhs.organizer.services.RoutingService  - Unexpected error during call of conveyorservice: JSONObject["routes"] not found.. Attempting a recursive call for suitcase 2
+6357 [Thread-2] ERROR be.kdg.bhs.organizer.services.RoutingService  - Error while processing suitcase with id 2 and errormessage JSONObject["routes"] not found.
+6357 [Thread-2] INFO  be.kdg.bhs.organizer.services.RoutingService  - End onReceiveSuitcase(): Suitcase 2 
+6410 [Thread-2] DEBUG be.kdg.bhs.organizer.jms.ConsumerLogic  - Message content: <suitcasemessage><suitcaseId>3</suitcaseId><flightNumber>1111113</flightNumber>
+<conveyorId>10</conveyorId><date>2018-05-31 23:37:51.289</date>
+</suitcasemessage>
+6415 [Thread-2] INFO  be.kdg.bhs.organizer.services.RoutingService  - Entered onReceiveSuitcase(): Suitcase 3 is being processed
+6415 [Thread-2] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightservice(1111113)
+6415 [Thread-2] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1111113)
+6516 [Thread-2] INFO  be.kdg.bhs.organizer.api.FlightService  - End flightservice(1111113) with result 66
+6516 [Thread-2] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered routeInformation(10,66)
+6621 [Thread-2] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - End routeInformation(10,66) returned routes Route: [10, 69, 73, 63, 66]Route: [10, 85, 76, 66]
+6621 [Thread-2] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - Entered nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@7e8a3f5b,10)
+6621 [Thread-2] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - End nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@7e8a3f5b,10) with the optimalroute be.kdg.bhs.organizer.model.Route@ce77d66 and nextconveyor 85
+25387 [Thread-2] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering marshalMessage(be.kdg.bhs.organizer.dto.RouteMessageDTO@16d3d8e1)
+25401 [Thread-2] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - End marshalMessage(be.kdg.bhs.organizer.dto.RouteMessageDTO@16d3d8e1) with result <?xml version="1.0" encoding="UTF-8" standalone="yes"?><routeMessage><bagageID>3</bagageID><conveyorID>85</conveyorID></routeMessage>
+28242 [Thread-2] INFO  be.kdg.bhs.organizer.services.RoutingService  - End onReceiveSuitcase(): Suitcase 3 
+50559 [Thread-0] INFO  be.kdg.bhs.organizer.services.InMemoryBehaviourConveyorServiceImpl  - Removed item with ID 11-41 on Thu May 31 23:37:51 CEST 2018 after timeInterval: 50144ms
+56651 [Thread-0] INFO  be.kdg.bhs.organizer.services.InMemoryBehaviourConveyorServiceImpl  - Removed item with ID 10-66 on Thu May 31 23:37:57 CEST 2018 after timeInterval: 50030ms
+66162 [Thread-1] INFO  be.kdg.bhs.organizer.services.InMemoryBehaviourRouteServiceImpl  - Removed suitcase with ID because it is lost1 on Thu May 31 23:37:57 CEST 2018 after timeInterval: 60172ms
+88276 [Thread-1] INFO  be.kdg.bhs.organizer.services.InMemoryBehaviourRouteServiceImpl  - Removed suitcase with ID because it is lost3 on Thu May 31 23:38:19 CEST 2018 after timeInterval: 60034ms

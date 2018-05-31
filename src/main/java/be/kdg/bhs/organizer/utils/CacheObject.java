@@ -29,4 +29,7 @@ public class CacheObject<V> {
         return timeEnteredCache;
     }
 
+    public void setTimeEnteredCache(long timeEnteredCache) {
+        this.timeEnteredCache = timeEnteredCache;
+    }
 }

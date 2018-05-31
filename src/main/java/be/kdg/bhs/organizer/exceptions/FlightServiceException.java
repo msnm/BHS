@@ -5,7 +5,7 @@ package be.kdg.bhs.organizer.exceptions;
  * @project BHS
  * Whenever the external implementation of the FlightService instance throws a message it is wrapped in this FlighServiceException
  */
-public class FlightServiceException extends Exception {
+public class FlightServiceException extends RoutingException {
     private Integer flightNumber;
 
     public FlightServiceException(String message) {

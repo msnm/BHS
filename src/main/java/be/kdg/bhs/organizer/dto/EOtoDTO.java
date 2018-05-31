@@ -11,6 +11,6 @@ public class EOtoDTO {
 
     public static RouteMessageDTO RouteToRouteMessageDTO(Integer nextConveyor, Integer suitcaseId) {
         //TODO logic of getting the next conveyor should not be happing in EOtoDTO class. Need to improve this.
-        return  new RouteMessageDTO(nextConveyor, suitcaseId);
+        return  new RouteMessageDTO(suitcaseId, nextConveyor);
     }
 }

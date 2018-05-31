@@ -65,6 +65,13 @@ public class InMemoryCache<K, V extends CacheObject> {
         return this.cacheMap.get(key);
     }
 
+    public void removeCacheObject(K key) {
+        if (this.cacheMap == null) {
+            this.cacheMap = new HashMap<>();
+        }
+        this.cacheMap.remove(key);
+    }
+
 
     private void start(long expireTime, long intervalToCheck) {
 

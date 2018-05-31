@@ -49,24 +49,8 @@ public class RabbitMQConsumer implements MessageConsumerService {
                 public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException{
                     logger.info("Received message from RabbitMQConsumer queue " + queue);
                     String message = new String(body, "UTF-8");
-                    logger.debug("Message content: "+message);
-
-                    if (messageConsumerListener!=null) {
-                        // TODO: Message needs to be formatted
-                        // TODO: Write an exception when message formatting fails and implement onError.
-
-                        if (aClass.equals((new SuitcaseMessageDTO()).getClass())) {
-                            messageConsumerListener.onReceiveSuitcase((SuitcaseMessageDTO) formatter.unmarshalMessage(message,aClass));
-
-                        }
-                        else if (aClass.equals((new SensorMessageDTO()).getClass())) {
-                            messageConsumerListener.onReceiveSensorMessage((SensorMessageDTO) formatter.unmarshalMessage(message,aClass));
-
-                        }
-                        else {
-                            //TODO throwing an exception
-                        }
-                    }
+                    ConsumerLogic consumerLogic = new ConsumerLogic();
+                    consumerLogic.consumeMessage(messageConsumerListener,formatter,message,aClass);
                 }
 
             };

@@ -72,7 +72,7 @@ public class CalculateRouteServiceImpl implements CalculateRouteService {
         for (Route route : routes.getRouteList()) {
             int density = 0;
             for (int conveyor : route.getRoute()) {
-                if (conveyorTraffic.containsKey(conveyorTraffic)) {
+                if (conveyorTraffic.containsKey(conveyor)) {
                     density+=conveyorTraffic.get(conveyor);
                 }
             }
@@ -93,7 +93,7 @@ public class CalculateRouteServiceImpl implements CalculateRouteService {
             min = minRoutes.get(0).getRoute().size();
             Route minRoute= minRoutes.get(0);
             for (int i =1; i< minRoutes.size();i++) {
-                Integer countConveyors = new Integer(minRoutes.get(i).getRoute().size());
+                Integer countConveyors = minRoutes.get(i).getRoute().size();
                 if (countConveyors.compareTo(min)<0) {
                     minRoute = minRoutes.get(i);
                     min = countConveyors;
