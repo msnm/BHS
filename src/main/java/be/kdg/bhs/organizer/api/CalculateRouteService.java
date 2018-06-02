@@ -1,6 +1,5 @@
 package be.kdg.bhs.organizer.api;
 
-import be.kdg.bhs.organizer.model.Route;
 import be.kdg.bhs.organizer.model.Routes;
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -13,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public interface CalculateRouteService {
 
     /**
-     * Calculates the optimal route, based on conveyordensity and return the next conveyor.
+     * Calculates the optimal route, based on conveyordensity
      * @param routes are the routes provided by the {@link ConveyorService}
      * @param currentConveyor is the currentconveyor where the suitcase resides.
      * @return the next conveyor for the suitcase.

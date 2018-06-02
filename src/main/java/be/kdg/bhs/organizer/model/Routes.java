@@ -5,6 +5,7 @@ import java.util.List;
 /**
  * @author Michael
  * @project BHS
+ * Entity class which contains multiple {@link Route} objects. Needed
  */
 public class Routes {
     private List<Route> routeList;

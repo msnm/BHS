@@ -3,6 +3,7 @@ package be.kdg.bhs.organizer.dto;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * Represents a Routing Message that is put on a queue. It is JAXB annotated, to be marshalled or unmarshalled.
  * @author Michael
  * @project BHS
  */

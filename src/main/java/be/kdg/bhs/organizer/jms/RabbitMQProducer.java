@@ -15,6 +15,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.TimeoutException;
 
 /**
+ * Produces messages to a CLOUDAMQP queue
  * @author Michael
  * @project BHS
  */
@@ -33,6 +34,7 @@ public class RabbitMQProducer implements MessageProducerService {
 
     @Override
     public <T> void publishMessage(T genericMessage, MessageFormatterService messageFormatterService) {
+        logger.debug("Entered: publishMessage()");
         ConnectionFactory factory = new ConnectionFactory();
         try {
             factory.setUri(connectionLink);
@@ -45,11 +47,12 @@ public class RabbitMQProducer implements MessageProducerService {
             boolean autoDelete = false; //autodelete - queue is deleted when last consumer unsubscribes
 
             channel.queueDeclare(queue, durable, exclusive, autoDelete, null);
-
-            channel.basicPublish("", queue, null, messageFormatterService.marshalMessage(genericMessage).getBytes());
+            String message= messageFormatterService.marshalMessage(genericMessage);
+            channel.basicPublish("", queue, null, message.getBytes());
 
             channel.close();
             connection.close();
+            logger.debug("End: publishMessage() with published message ", message);
 
         } catch (URISyntaxException e) {
             e.printStackTrace();
@@ -63,47 +66,4 @@ public class RabbitMQProducer implements MessageProducerService {
             e.printStackTrace();
         }
     }
-    /*
-
-     String uri = "amqp://pdxgjznm:mA6rcIpvVaZNPGuY9OB5xFJAK_1cu7S6@hound.rmq.cloudamqp.com/pdxgjznm";
-        ConnectionFactory factory = new ConnectionFactory();
-        factory.setUri(uri); // indien je met een lokaal geinstalleerde RabbitMQ server werkt doe je hier setHost
-
-        //Recommended settings
-        factory.setRequestedHeartbeat(30);
-        factory.setConnectionTimeout(30000);
-
-        Connection connection = factory.newConnection();
-        Channel channel = connection.createChannel();
-
-        String queue = "SOCIAL MEDIA V1";     //queue name
-        boolean durable = false;    //durable - RabbitMQ will never lose the queue if a crash occurs
-        boolean exclusive = false;  //exclusive - if queue only will be used by one connection
-        boolean autoDelete = false; //autodelete - queue is deleted when last consumer unsubscribes
-
-        channel.queueDeclare(queue, durable, exclusive, autoDelete, null);
-
-        Logger logger = Logger.getLogger(Sender.class);
-        logger.info("Using uri '" + uri + "'");
-        logger.info("Using queue '" + queue + "'");
-
-        pollConsole(channel, queue, logger); // endless loop unit exit typed (!)
-
-        channel.close();
-        connection.close();
-
-    }
-
-
-    private static void pollConsole(Channel channel, String queue, Logger logger) throws IOException {
-        logger.info("Listening for sentences");
-        Scanner scanner = new Scanner(System.in);
-        String message = scanner.nextLine();
-        while (!message.equals("exit")) {
-            channel.basicPublish("", queue, null, message.getBytes());
-            logger.info("Sent '" + message + "'");
-            message = scanner.nextLine();
-        }
-    }
-     */
 }

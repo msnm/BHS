@@ -1,8 +1,8 @@
 package be.kdg.bhs.organizer.api;
 
-import be.kdg.bhs.organizer.dto.MessageDTO;
 import be.kdg.bhs.organizer.dto.SensorMessageDTO;
 import be.kdg.bhs.organizer.dto.SuitcaseMessageDTO;
+import be.kdg.bhs.organizer.model.StatusMessage;
 
 /**
  * @author Michael
@@ -14,12 +14,20 @@ import be.kdg.bhs.organizer.dto.SuitcaseMessageDTO;
 public interface MessageConsumerListener
 {
     /**
-     * Called when a mew message is available.
+     * Called when a new SuitcaseMessage is available.
      * @param messageDTO the message converted from the wire format to a DTO.
      */
-    void onReceiveSuitcase(SuitcaseMessageDTO messageDTO);
+    void onReceiveSuitcaseMessage(SuitcaseMessageDTO messageDTO);
 
+    /**
+     * Called when a new SensorMessage is available.
+     * @param messageDTO
+     */
     void onReceiveSensorMessage(SensorMessageDTO messageDTO);
 
-    void onError();
+    /**
+     * Called when a suitcase is arrived, or lost, or undeliverable to send a statusMessage
+     * @param statusMessage
+     */
+    void sendStatusMessage(StatusMessage statusMessage);
 }

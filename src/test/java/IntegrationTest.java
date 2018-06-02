@@ -31,6 +31,7 @@ public class IntegrationTest {
          * Name of different queues
          */
         final String routeMessageQueue="routeMessageQueue";
+        final String statusMessageQueue="statusMessageQueue";
 
         /**
          * MessageFormatService used to transform the incoming message protocol to a DTO object
@@ -54,7 +55,11 @@ public class IntegrationTest {
          * MessageProducerService which initilializes a messagebroker implementation to publish to a given queue on given broker.
          * Here we haven choosen RabbitMQ via cloudAMQP. Could be ActiveMQ in the future.
          */
-        MessageProducerService producerService = new RabbitMQProducer(routeMessageQueue, connection);
+        MessageProducerService producerServiceForRoutingMessages = new RabbitMQProducer(routeMessageQueue, connection);
+        MessageProducerService producerServiceForStatusMessages = new RabbitMQProducer(statusMessageQueue,connection);
+        List<MessageProducerService> messageProducerList = new ArrayList<>();
+        messageProducerList.add(producerServiceForRoutingMessages);
+        messageProducerList.add(producerServiceForStatusMessages);
 
         /**
          * The flightService asks the flightGate (boardingConveyorID).
@@ -76,7 +81,7 @@ public class IntegrationTest {
         /**
          * RoutingService is like a controller and fungates as a callback when a message is read from a queue.
          */
-        routingService = new RoutingService(messageConsumerServiceList,producerService,formatterService,
+        routingService = new RoutingService(messageConsumerServiceList,messageProducerList,formatterService,
                 flightService,conveyorService,calculateRouteService,60000,200);
 
 

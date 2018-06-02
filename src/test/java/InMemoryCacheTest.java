@@ -1,10 +1,9 @@
 import be.kdg.bhs.organizer.model.Suitcase;
 import be.kdg.bhs.organizer.services.InMemoryBehaviourConveyorServiceImpl;
-import be.kdg.bhs.organizer.utils.CacheObject;
-import be.kdg.bhs.organizer.utils.InMemoryCache;
+import be.kdg.bhs.organizer.repo.CacheObject;
+import be.kdg.bhs.organizer.repo.InMemoryCache;
 import org.junit.Before;
 import org.junit.Test;
-import sun.jvm.hotspot.utilities.Assert;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -30,13 +29,13 @@ public class InMemoryCacheTest {
 
     @Test
     public void expirationTester() {
-        inMemoryCache = new InMemoryCache<>(4000,1000, new InMemoryBehaviourConveyorServiceImpl());
+        inMemoryCache = new InMemoryCache<>(4000,1000, new InMemoryBehaviourTestServiceImpl());
 
         //1 second between each object
         for(Suitcase suitcase : suitcaseList) {
-            inMemoryCache.putCacheObject(suitcase.getId(),new CacheObject<>(suitcase));
-            System.out.println("Suitcase id: "+suitcase.getId()+" Entered on: "
-                    + new Date(inMemoryCache.getCacheObject(suitcase.getId()).getTimeEnteredCache()));
+            inMemoryCache.putCacheObject(suitcase.getSuitCaseId(),new CacheObject<>(suitcase));
+            System.out.println("Suitcase id: "+suitcase.getSuitCaseId()+" Entered on: "
+                    + new Date(inMemoryCache.getCacheObject(suitcase.getSuitCaseId()).getTimeEnteredCache()));
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -65,9 +64,9 @@ public class InMemoryCacheTest {
             e.printStackTrace();
         }
         System.out.println(inMemoryCache.getCacheMap().toString());
-        inMemoryCache.putCacheObject(suitcaseList.get(0).getId(),new CacheObject<>(suitcaseList.get(0)));
-        System.out.println("Suitcase id: "+suitcaseList.get(0).getId()+" Entered on: "
-                + new Date(inMemoryCache.getCacheObject(suitcaseList.get(0).getId()).getTimeEnteredCache()));
+        inMemoryCache.putCacheObject(suitcaseList.get(0).getSuitCaseId(),new CacheObject<>(suitcaseList.get(0)));
+        System.out.println("Suitcase id: "+suitcaseList.get(0).getSuitCaseId()+" Entered on: "
+                + new Date(inMemoryCache.getCacheObject(suitcaseList.get(0).getSuitCaseId()).getTimeEnteredCache()));
         System.out.println(inMemoryCache.getCacheMap().toString());
         try {
             Thread.sleep(5000);

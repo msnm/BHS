@@ -5,13 +5,14 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.sql.Timestamp;
 
 /**
+ * Represents a Suitcase Message that is read from a queue. It is JAXB annotated, to be marshalled or unmarshalled.
  * @author Michael
  * @project BHS
  */
 
 
 @XmlRootElement(name = "suitcasemessage")
-public class SuitcaseMessageDTO implements MessageDTO {
+public class SuitcaseMessageDTO {
     private Integer suitcaseId;
     private Integer flightNumber;
     private Integer conveyorId;

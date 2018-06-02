@@ -1,32 +1,30 @@
 package be.kdg.bhs.organizer.model;
 
-import be.kdg.bhs.organizer.dto.SuitcaseMessageDTO;
-
 import java.sql.Timestamp;
 
 /**
  * @author Michael
  * @project BHS
  *
- * Business entity representing a Suitcase
+ * Business entity representing a Suitcase.
  */
 public class Suitcase {
 
-    private final Integer id;
+    private final Integer suitCaseId;
     private final Integer flightNumber;
     private Integer conveyorId;
     private Integer boardingConveyorId;
     private Timestamp date;
 
     public Suitcase(Integer id, Integer flightNumber, Integer conveyorId, Timestamp date) {
-        this.id = id;
+        this.suitCaseId = id;
         this.flightNumber = flightNumber;
         this.conveyorId = conveyorId;
         this.date = date;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getSuitCaseId() {
+        return suitCaseId;
     }
 
     public Integer getFlightNumber() {

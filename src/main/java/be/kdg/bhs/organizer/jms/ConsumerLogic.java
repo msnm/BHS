@@ -15,29 +15,25 @@ import org.slf4j.LoggerFactory;
  */
 public class ConsumerLogic {
     private Logger logger = LoggerFactory.getLogger(ConsumerLogic.class);
-    private MessageConsumerListener messageConsumerListener;
 
     public ConsumerLogic() {
     }
 
     public void consumeMessage(MessageConsumerListener messageConsumerListener, MessageFormatterService formatter, String message, Class aClass) {
-        logger.debug("Message content: "+message);
+        logger.debug("Entered: consumeMessage() ");
+        try {
+            if (messageConsumerListener != null) {
+                if (aClass.equals((new SuitcaseMessageDTO()).getClass())) {
+                    messageConsumerListener.onReceiveSuitcaseMessage((SuitcaseMessageDTO) formatter.unmarshalMessage(message, aClass));
 
-        if (messageConsumerListener!=null) {
-            // TODO: Message needs to be formatted
-            // TODO: Write an exception when message formatting fails and implement onError.
+                } else if (aClass.equals((new SensorMessageDTO()).getClass())) {
+                    messageConsumerListener.onReceiveSensorMessage((SensorMessageDTO) formatter.unmarshalMessage(message, aClass));
 
-            if (aClass.equals((new SuitcaseMessageDTO()).getClass())) {
-                messageConsumerListener.onReceiveSuitcase((SuitcaseMessageDTO) formatter.unmarshalMessage(message,aClass));
-
+                }
             }
-            else if (aClass.equals((new SensorMessageDTO()).getClass())) {
-                messageConsumerListener.onReceiveSensorMessage((SensorMessageDTO) formatter.unmarshalMessage(message,aClass));
-
-            }
-            else {
-                //TODO throwing an exception
-            }
+        } catch (Exception e) {
+            logger.error("consumeMessage failed for message {} of class {} with exceptionmessage", message, aClass.getName(),e.getMessage());
         }
+        logger.debug("End: consumeMessage() ");
     }
 }

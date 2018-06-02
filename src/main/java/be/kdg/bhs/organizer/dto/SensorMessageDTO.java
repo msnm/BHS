@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.sql.Timestamp;
 
 /**
+ * Represents a Sensor Message that is read from a queue. It is JAXB annotated, to be marshalled or unmarshalled.
  * @author Michael
  * @project BHS
  */
@@ -19,9 +20,6 @@ public class SensorMessageDTO {
     public SensorMessageDTO() {
     }
 
-    public Integer getBagageID() {
-        return suitcaseId;
-    }
 
     public Integer getSuitcaseId() {
         return suitcaseId;

@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 /**
+ * In order to marshal/unmarshal type Timestamp with JAXB, an adapter is needed.
  * @author Michael
  * @project BHS
  */

@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 /**
  * @author Michael
  * @project BHS
+ * Entity Class representing a SensorMessage to correspond with the Simulator program.
  */
 public class SensorMessage {
     private final Integer Id;

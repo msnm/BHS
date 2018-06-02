@@ -4,9 +4,9 @@ import be.kdg.bhs.organizer.api.*;
 import be.kdg.bhs.organizer.jms.RabbitMQConsumer;
 import be.kdg.bhs.organizer.jms.RabbitMQProducer;
 import be.kdg.bhs.organizer.services.*;
-import java.util.List;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -25,6 +25,7 @@ public class Main {
          */
         final String suitCaseQueue = "suitcaseQueue";
         final String routeMessageQueue="routeMessageQueue";
+        final String statusMessageQueue="statusMessageQueue";
         final String sensorMessageQueue="sensorMessageQueue";
 
         /**
@@ -47,8 +48,11 @@ public class Main {
          * MessageProducerService which initilializes a messagebroker implementation to publish to a given queue on given broker.
          * Here we haven choosen RabbitMQ via cloudAMQP. Could be ActiveMQ in the future.
          */
-        MessageProducerService producerService = new RabbitMQProducer(routeMessageQueue, connection);
-
+        MessageProducerService producerServiceForRoutingMessages = new RabbitMQProducer(routeMessageQueue, connection);
+        MessageProducerService producerServiceForStatusMessages = new RabbitMQProducer(statusMessageQueue,connection);
+        List<MessageProducerService> messageProducerList = new ArrayList<>();
+        messageProducerList.add(producerServiceForRoutingMessages);
+        messageProducerList.add(producerServiceForStatusMessages);
         /**
          * The flightService asks the flightGate (boardingConveyorID).
          * FlightService has a wrapper FlightServiceImpl which inject FlightServiceProxy. A new FlightServiceImpl based on a restService can be used.
@@ -69,7 +73,7 @@ public class Main {
         /**
          * RoutingService is like a controller and fungates as a callback when a message is read from a queue.
          */
-        RoutingService routingService = new RoutingService(messageConsumerServiceList,producerService,formatterService,
+        RoutingService routingService = new RoutingService(messageConsumerServiceList,messageProducerList,formatterService,
                 flightService,conveyorService,calculateRouteService,60000,200);
         routingService.start();
 

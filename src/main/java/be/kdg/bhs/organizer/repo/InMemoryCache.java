@@ -1,11 +1,12 @@
-package be.kdg.bhs.organizer.utils;
+package be.kdg.bhs.organizer.repo;
 
 
 import be.kdg.bhs.organizer.api.InMemoryBehaviourService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author Michael
@@ -16,7 +17,7 @@ import java.util.*;
  */
 public class InMemoryCache<K, V extends CacheObject> {
     Logger logger = LoggerFactory.getLogger(InMemoryCache.class);
-    private Map<K, V> cacheMap;
+    private ConcurrentHashMap<K, V> cacheMap;
     private InMemoryBehaviourService inMemoryBehaviourService;
     private boolean activateCache = true;
 
@@ -33,41 +34,41 @@ public class InMemoryCache<K, V extends CacheObject> {
     }
 
 
-    public synchronized Map<K, V> getCacheMap() {
+    public synchronized ConcurrentHashMap<K, V> getCacheMap() {
         if (cacheMap==null) {
-            this.cacheMap = new HashMap<>();
+            this.cacheMap = new ConcurrentHashMap<>();
         }
         return this.cacheMap;
     }
 
-    public void setCacheMap(Map<K, V> cacheMap) {
+    public void setCacheMap(ConcurrentHashMap<K, V> cacheMap) {
         this.cacheMap = cacheMap;
     }
 
     public boolean containsCacheObject(K key) {
         if (this.cacheMap == null) {
-            this.cacheMap = new HashMap<>();
+            this.cacheMap = new ConcurrentHashMap<>();
         }
         return this.cacheMap.containsKey(key);
     }
 
     public void putCacheObject(K key, V value) {
         if (this.cacheMap == null) {
-            this.cacheMap = new HashMap<>();
+            this.cacheMap = new ConcurrentHashMap<>();
         }
         this.cacheMap.put(key, value);
     }
 
     public V getCacheObject(K key) {
         if (this.cacheMap == null) {
-            this.cacheMap = new HashMap<>();
+            this.cacheMap = new ConcurrentHashMap<>();
         }
         return this.cacheMap.get(key);
     }
 
     public void removeCacheObject(K key) {
         if (this.cacheMap == null) {
-            this.cacheMap = new HashMap<>();
+            this.cacheMap = new ConcurrentHashMap<>();
         }
         this.cacheMap.remove(key);
     }

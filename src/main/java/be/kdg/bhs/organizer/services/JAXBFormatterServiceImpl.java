@@ -1,8 +1,6 @@
 package be.kdg.bhs.organizer.services;
 
 import be.kdg.bhs.organizer.api.MessageFormatterService;
-import be.kdg.bhs.organizer.dto.MessageDTO;
-import be.kdg.bhs.organizer.dto.SuitcaseMessageDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,6 +14,8 @@ import java.io.StringWriter;
 /**
  * @author Michael
  * @project BHS
+ * Implements the {@link MessageFormatterService} and makes use of JAXB to marshal unmarshal objects which are
+ * JAXB annotated.
  */
 public class JAXBFormatterServiceImpl implements MessageFormatterService {
 

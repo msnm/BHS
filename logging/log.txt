@@ -1,44 +1,22 @@
-1    [Thread-2] DEBUG be.kdg.bhs.organizer.jms.ConsumerLogic  - Message content: <suitcasemessage><suitcaseId>1</suitcaseId><flightNumber>1111111</flightNumber>
-<conveyorId>11</conveyorId><date>2018-05-31 23:37:51.276</date>
-</suitcasemessage>
-150  [Thread-2] INFO  be.kdg.bhs.organizer.services.RoutingService  - Entered onReceiveSuitcase(): Suitcase 1 is being processed
-151  [Thread-2] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightservice(1111111)
-151  [Thread-2] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1111111)
-298  [Thread-2] INFO  be.kdg.bhs.organizer.api.FlightService  - End flightservice(1111111) with result 41
-298  [Thread-2] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered routeInformation(11,41)
-413  [Thread-2] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - End routeInformation(11,41) returned routes Route: [11, 21, 41]
-416  [Thread-2] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - Entered nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@70cd271b,11)
-434  [Thread-2] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - End nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@70cd271b,11) with the optimalroute be.kdg.bhs.organizer.model.Route@8a81804 and nextconveyor 21
-5989 [AMQP Connection 34.230.84.117:5672] WARN  com.rabbitmq.client.impl.ForgivingExceptionHandler  - An unexpected connection driver error occured (Exception message: Socket closed)
-5990 [Thread-2] INFO  be.kdg.bhs.organizer.services.RoutingService  - End onReceiveSuitcase(): Suitcase 1 
-6041 [Thread-2] DEBUG be.kdg.bhs.organizer.jms.ConsumerLogic  - Message content: <suitcasemessage><suitcaseId>2</suitcaseId><flightNumber>1111112</flightNumber>
-<conveyorId>11</conveyorId><date>2018-05-31 23:37:51.289</date>
-</suitcasemessage>
-6047 [Thread-2] INFO  be.kdg.bhs.organizer.services.RoutingService  - Entered onReceiveSuitcase(): Suitcase 2 is being processed
-6047 [Thread-2] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightservice(1111112)
-6047 [Thread-2] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1111112)
-6148 [Thread-2] INFO  be.kdg.bhs.organizer.api.FlightService  - End flightservice(1111112) with result 42
-6148 [Thread-2] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered routeInformation(11,42)
-6252 [Thread-2] ERROR be.kdg.bhs.organizer.services.RoutingService  - Unexpected error during call of conveyorservice: JSONObject["routes"] not found.. Attempting a recursive call for suitcase 2
-6252 [Thread-2] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered routeInformation(11,42)
-6357 [Thread-2] ERROR be.kdg.bhs.organizer.services.RoutingService  - Unexpected error during call of conveyorservice: JSONObject["routes"] not found.. Attempting a recursive call for suitcase 2
-6357 [Thread-2] ERROR be.kdg.bhs.organizer.services.RoutingService  - Error while processing suitcase with id 2 and errormessage JSONObject["routes"] not found.
-6357 [Thread-2] INFO  be.kdg.bhs.organizer.services.RoutingService  - End onReceiveSuitcase(): Suitcase 2 
-6410 [Thread-2] DEBUG be.kdg.bhs.organizer.jms.ConsumerLogic  - Message content: <suitcasemessage><suitcaseId>3</suitcaseId><flightNumber>1111113</flightNumber>
-<conveyorId>10</conveyorId><date>2018-05-31 23:37:51.289</date>
-</suitcasemessage>
-6415 [Thread-2] INFO  be.kdg.bhs.organizer.services.RoutingService  - Entered onReceiveSuitcase(): Suitcase 3 is being processed
-6415 [Thread-2] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightservice(1111113)
-6415 [Thread-2] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1111113)
-6516 [Thread-2] INFO  be.kdg.bhs.organizer.api.FlightService  - End flightservice(1111113) with result 66
-6516 [Thread-2] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered routeInformation(10,66)
-6621 [Thread-2] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - End routeInformation(10,66) returned routes Route: [10, 69, 73, 63, 66]Route: [10, 85, 76, 66]
-6621 [Thread-2] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - Entered nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@7e8a3f5b,10)
-6621 [Thread-2] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - End nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@7e8a3f5b,10) with the optimalroute be.kdg.bhs.organizer.model.Route@ce77d66 and nextconveyor 85
-25387 [Thread-2] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering marshalMessage(be.kdg.bhs.organizer.dto.RouteMessageDTO@16d3d8e1)
-25401 [Thread-2] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - End marshalMessage(be.kdg.bhs.organizer.dto.RouteMessageDTO@16d3d8e1) with result <?xml version="1.0" encoding="UTF-8" standalone="yes"?><routeMessage><bagageID>3</bagageID><conveyorID>85</conveyorID></routeMessage>
-28242 [Thread-2] INFO  be.kdg.bhs.organizer.services.RoutingService  - End onReceiveSuitcase(): Suitcase 3 
-50559 [Thread-0] INFO  be.kdg.bhs.organizer.services.InMemoryBehaviourConveyorServiceImpl  - Removed item with ID 11-41 on Thu May 31 23:37:51 CEST 2018 after timeInterval: 50144ms
-56651 [Thread-0] INFO  be.kdg.bhs.organizer.services.InMemoryBehaviourConveyorServiceImpl  - Removed item with ID 10-66 on Thu May 31 23:37:57 CEST 2018 after timeInterval: 50030ms
-66162 [Thread-1] INFO  be.kdg.bhs.organizer.services.InMemoryBehaviourRouteServiceImpl  - Removed suitcase with ID because it is lost1 on Thu May 31 23:37:57 CEST 2018 after timeInterval: 60172ms
-88276 [Thread-1] INFO  be.kdg.bhs.organizer.services.InMemoryBehaviourRouteServiceImpl  - Removed suitcase with ID because it is lost3 on Thu May 31 23:38:19 CEST 2018 after timeInterval: 60034ms
+0    [main] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - Entered: nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@5f8ed237,1)
+161  [main] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - End: nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@5f8ed237,1) with the optimalroute Route: [1, 2] and nextconveyor 2
+162  [main] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - Entered: nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@3ecf72fd,1)
+162  [main] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - End: nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@3ecf72fd,1) with the optimalroute Route: [1, 3] and nextconveyor 3
+0    [main] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered: routeInformation(111,21)
+153  [main] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered: routeInformation(11,21)
+269  [main] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Added route 11-21 to cacheOfRoutes
+275  [main] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - End routeInformation(11,21) returned routes Route: [11, 21]
+276  [main] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered: routeInformation(1,22)
+382  [main] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Added route 1-22 to cacheOfRoutes
+382  [main] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - End routeInformation(1,22) returned routes Route: [1, 61, 91, 22]Route: [1, 87, 22]
+887  [main] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered: routeInformation(1,22)
+887  [main] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - End routeInformation(1,22) returned routes Route: [1, 61, 91, 22]Route: [1, 87, 22]
+2331 [Thread-1] INFO  be.kdg.bhs.organizer.services.InMemoryBehaviourConveyorServiceImpl  - Removed Route Route: [11, 21] from cacheOfRoutes on Sat Jun 02 23:26:48 CEST 2018 after timeinterval 2049 ms
+2444 [Thread-2] INFO  be.kdg.bhs.organizer.services.InMemoryBehaviourConveyorServiceImpl  - Removed Route Route: [1, 61, 91, 22]Route: [1, 87, 22] from cacheOfRoutes on Sat Jun 02 23:26:48 CEST 2018 after timeinterval 2062 ms
+3890 [main] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered: routeInformation(1,22)
+3996 [main] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Added route 1-22 to cacheOfRoutes
+3996 [main] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - End routeInformation(1,22) returned routes Route: [1, 73, 22]Route: [1, 96, 97, 65, 22]Route: [1, 96, 22]Route: [1, 89, 60, 52, 22]
+0    [Thread-0] INFO  InMemoryBehaviourTestServiceImpl  - Removed suitcase 1 from cacheOfSuitcases on Sat Jun 02 23:29:22 CEST 2018 after timeinterval 4014 ms
+1005 [Thread-0] INFO  InMemoryBehaviourTestServiceImpl  - Removed suitcase 2 from cacheOfSuitcases on Sat Jun 02 23:29:23 CEST 2018 after timeinterval 4007 ms
+2007 [Thread-0] INFO  InMemoryBehaviourTestServiceImpl  - Removed suitcase 3 from cacheOfSuitcases on Sat Jun 02 23:29:24 CEST 2018 after timeinterval 4008 ms
+9028 [Thread-0] INFO  InMemoryBehaviourTestServiceImpl  - Removed suitcase 1 from cacheOfSuitcases on Sat Jun 02 23:29:31 CEST 2018 after timeinterval 4017 ms

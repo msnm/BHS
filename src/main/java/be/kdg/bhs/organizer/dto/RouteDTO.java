@@ -3,6 +3,7 @@ package be.kdg.bhs.organizer.dto;
 import java.util.List;
 
 /**
+ * Used as return type in the {@link be.kdg.bhs.organizer.api.ConveyorService}
  * @author Michael
  * @project BHS
  */

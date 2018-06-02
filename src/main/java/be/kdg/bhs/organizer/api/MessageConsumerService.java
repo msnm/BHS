@@ -17,7 +17,7 @@ public interface MessageConsumerService {
 
 
     /**
-     * End communication
+     * End communication with the messagebroker.
      */
     void shutdown();
 }

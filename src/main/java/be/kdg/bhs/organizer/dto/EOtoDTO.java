@@ -1,16 +1,19 @@
 package be.kdg.bhs.organizer.dto;
 
-import be.kdg.bhs.organizer.model.Route;
-import be.kdg.bhs.organizer.model.Suitcase;
+import be.kdg.bhs.organizer.model.StatusMessage;
 
 /**
+ * Converts Entity Objects to Data Transfer Objects
  * @author Michael
  * @project BHS
  */
 public class EOtoDTO {
 
     public static RouteMessageDTO RouteToRouteMessageDTO(Integer nextConveyor, Integer suitcaseId) {
-        //TODO logic of getting the next conveyor should not be happing in EOtoDTO class. Need to improve this.
         return  new RouteMessageDTO(suitcaseId, nextConveyor);
+    }
+
+    public static StatusMessageDTO StatusMessageToStatusMessageDTO(StatusMessage statusMessage) {
+        return  new StatusMessageDTO(statusMessage.getStatus(),statusMessage.getSuitcaseId(),statusMessage.getConveyorId());
     }
 }

@@ -1,4 +1,4 @@
-package be.kdg.bhs.organizer.utils;
+package be.kdg.bhs.organizer.repo;
 
 /**
  * @author Michael

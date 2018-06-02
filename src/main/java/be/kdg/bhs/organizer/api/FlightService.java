@@ -2,8 +2,6 @@ package be.kdg.bhs.organizer.api;
 
 import be.kdg.bhs.organizer.exceptions.FlightServiceException;
 
-import java.util.Map;
-
 /**
  * @author Michael
  * @project BHS
@@ -13,8 +11,8 @@ public interface FlightService {
 
     /**
      *
-     * @param flightNumber
-     * @return
+     * @param flightNumber is needed to retrieve the boardingconveyor.
+     * @return the boardingconveyor (=gate)
      * @throws FlightServiceException
      */
     Integer flightInFormation(Integer flightNumber) throws FlightServiceException;

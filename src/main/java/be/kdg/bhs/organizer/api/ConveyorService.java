@@ -15,7 +15,7 @@ public interface ConveyorService {
      *
      * @param startConveyor the startingpoint of a route
      * @param boardingConveyor the endpoint of the route
-     * @return
+     * @return {@link RouteDTO} contains all the possible routes between start and endpoint
      * @throws ConveyorServiceException
      */
     RouteDTO routeInformation(Integer startConveyor, Integer boardingConveyor) throws ConveyorServiceException;

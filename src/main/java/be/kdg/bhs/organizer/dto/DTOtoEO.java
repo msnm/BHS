@@ -3,12 +3,12 @@ package be.kdg.bhs.organizer.dto;
 import be.kdg.bhs.organizer.model.Route;
 import be.kdg.bhs.organizer.model.Routes;
 import be.kdg.bhs.organizer.model.Suitcase;
-import java.util.List;
-
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
+ * Converts Data Transfer Objects to Entity Objects belonging to the domain.
  * @author Michael
  * @project BHS
  */

@@ -3,19 +3,22 @@ package be.kdg.bhs.organizer.services;
 import be.kdg.bhs.organizer.api.ConveyorService;
 import be.kdg.bhs.organizer.dto.RouteDTO;
 import be.kdg.bhs.organizer.exceptions.ConveyorServiceException;
-import be.kdg.bhs.organizer.utils.CacheObject;
-import be.kdg.bhs.organizer.utils.InMemoryCache;
+import be.kdg.bhs.organizer.repo.CacheObject;
+import be.kdg.bhs.organizer.repo.InMemoryCache;
 import be.kdg.se3.proxy.ConveyorServiceProxy;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author Michael
  * @project BHS
+ * Implements the {@link ConveyorService} by translating the methods of the lib {@link ConveyorServiceProxy}.
+ * This class main purpose is to return a list of routes based on startconveyor and boardingconveyor.
  */
 public class ConveyorServiceImpl implements ConveyorService {
     private ConveyorServiceProxy conveyorServiceProxy;
@@ -30,15 +33,15 @@ public class ConveyorServiceImpl implements ConveyorService {
 
     @Override
     public RouteDTO routeInformation(Integer startConveyor, Integer boardingConveyor) throws ConveyorServiceException {
-        logger.info("Entered routeInformation({},{})",startConveyor,boardingConveyor);
+        logger.debug("Entered: routeInformation({},{})",startConveyor,boardingConveyor);
         RouteDTO routesDTO = checkIfRouteInfoIsCached(startConveyor,boardingConveyor);
         if (routesDTO == null) {
             routesDTO = askConveyorService(startConveyor,boardingConveyor);
             cacheOfRoutes.putCacheObject(makeKey(startConveyor, boardingConveyor),new CacheObject<>(routesDTO));
-            System.out.println("Added item with ID "+makeKey(startConveyor,boardingConveyor));
+            logger.info("Added route {} to cacheOfRoutes",makeKey(startConveyor,boardingConveyor));
         }
 
-        logger.info("End routeInformation({},{}) returned routes {}",startConveyor,boardingConveyor,routesDTO.toString());
+        logger.debug("End routeInformation({},{}) returned routes {}",startConveyor,boardingConveyor,routesDTO.toString());
         return routesDTO;
     }
 

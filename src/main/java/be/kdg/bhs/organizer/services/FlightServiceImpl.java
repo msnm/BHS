@@ -7,15 +7,11 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * @author Michael
  * @project BHS
  *
- * CImplementation of the FlightService interface. This service returns a boardingConveyorId for a given FlightId.
+ * Implementation of the FlightService interface. This service returns a boardingConveyorId for a given FlightId.
  */
 public class FlightServiceImpl implements FlightService {
     private static Logger logger = LoggerFactory.getLogger(FlightService.class);
@@ -27,7 +23,8 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public Integer flightInFormation(Integer flightNumber) throws FlightServiceException {
-        logger.info("Entering flightservice({})",flightNumber);
+        logger.debug("Entered: flightservice({})",flightNumber);
+
         JSONObject payLoad = null;
         String url = "www.services4se3.com/flightservice/";
         Integer boardingConveyorId = null;
@@ -42,7 +39,7 @@ public class FlightServiceImpl implements FlightService {
         } catch (Exception e) {
             throw new FlightServiceException(e.getMessage(),flightNumber);
         }
-        logger.info("End flightservice({}) with result {}",flightNumber,boardingConveyorId);
+        logger.info("End flightservice({}) with boardingConveyor {}",flightNumber,boardingConveyorId);
         return boardingConveyorId;
     }
 }

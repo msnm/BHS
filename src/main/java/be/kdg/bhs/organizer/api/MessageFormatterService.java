@@ -1,22 +1,25 @@
 package be.kdg.bhs.organizer.api;
 
-import be.kdg.bhs.organizer.dto.MessageDTO;
-import be.kdg.bhs.organizer.dto.SuitcaseMessageDTO;
-
 /**
  * @author Michael
  * @project BHS
  *
- * Is a callback interface, which is used to format a string.
+ * Marshalling and unmarshalling classes to any representation format.
  */
 public interface MessageFormatterService {
 
     /**
-     * Converts a message from a string based wire format to a class implementing {@link MessageDTO}
-     * @param message
-     * @return
+     * Converts a message from a string based wire format to a class
+     * @param message a string that needs to be unmarshalled
+     * @param aClass where the message needs to be unmarshalled to.
+     * @return the aClass. Is the class representation of the message
      */
     <T> T unmarshalMessage(String message, Class<T> aClass);
 
+    /**
+     * Converts a class to a string
+     * @param aMessageDTO a class that can be marshalled to a string the representation
+     * @return the string representation of the aMessageDTO.
+     */
     <T> String marshalMessage(T aMessageDTO);
 }

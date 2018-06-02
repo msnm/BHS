@@ -3,12 +3,12 @@ package be.kdg.bhs.organizer.services;
 import be.kdg.bhs.organizer.api.CalculateRouteService;
 import be.kdg.bhs.organizer.model.Route;
 import be.kdg.bhs.organizer.model.Routes;
-import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -24,17 +24,8 @@ public class CalculateRouteServiceImpl implements CalculateRouteService {
     ConcurrentHashMap<Integer, Integer> conveyorTraffic;
 
     @Override
-    public void setConveyorTraffic(ConcurrentHashMap<Integer, Integer> conveyorTraffic) {
-        this.conveyorTraffic = conveyorTraffic;
-    }
-
-    public ConcurrentHashMap<Integer, Integer> getConveyorTraffic() {
-        return conveyorTraffic;
-    }
-
-    @Override
     public Integer nextConveyorInRoute(Routes routes, Integer currentConveyor) {
-        logger.debug("Entered nextConveyorInRoute({},{})",routes.toString(), currentConveyor);
+        logger.debug("Entered: nextConveyorInRoute({},{})",routes.toString(), currentConveyor);
 
         //1. Calculate the most optimal route
         Route mostOptimalRoute = shortestRoute(routes, currentConveyor);
@@ -57,10 +48,19 @@ public class CalculateRouteServiceImpl implements CalculateRouteService {
         else {
             conveyorTraffic.put(currentConveyor,1);
         }
-        logger.debug("End nextConveyorInRoute({},{}) with the optimalroute {} and nextconveyor {}",routes.toString(), currentConveyor,mostOptimalRoute.toString(),nextConveyor);
+        logger.debug("End: nextConveyorInRoute({},{}) with the optimalroute {} and nextconveyor {}",routes.toString(), currentConveyor,mostOptimalRoute.toString(),nextConveyor);
 
         return nextConveyor;
 
+    }
+
+    @Override
+    public void setConveyorTraffic(ConcurrentHashMap<Integer, Integer> conveyorTraffic) {
+        this.conveyorTraffic = conveyorTraffic;
+    }
+
+    public ConcurrentHashMap<Integer, Integer> getConveyorTraffic() {
+        return conveyorTraffic;
     }
 
     private Route shortestRoute(Routes routes, Integer currentConveyor) {
