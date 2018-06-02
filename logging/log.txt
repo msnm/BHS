@@ -1,22 +1,179 @@
-0    [main] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - Entered: nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@5f8ed237,1)
-161  [main] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - End: nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@5f8ed237,1) with the optimalroute Route: [1, 2] and nextconveyor 2
-162  [main] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - Entered: nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@3ecf72fd,1)
-162  [main] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - End: nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@3ecf72fd,1) with the optimalroute Route: [1, 3] and nextconveyor 3
-0    [main] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered: routeInformation(111,21)
-153  [main] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered: routeInformation(11,21)
-269  [main] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Added route 11-21 to cacheOfRoutes
-275  [main] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - End routeInformation(11,21) returned routes Route: [11, 21]
-276  [main] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered: routeInformation(1,22)
-382  [main] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Added route 1-22 to cacheOfRoutes
-382  [main] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - End routeInformation(1,22) returned routes Route: [1, 61, 91, 22]Route: [1, 87, 22]
-887  [main] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered: routeInformation(1,22)
-887  [main] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - End routeInformation(1,22) returned routes Route: [1, 61, 91, 22]Route: [1, 87, 22]
-2331 [Thread-1] INFO  be.kdg.bhs.organizer.services.InMemoryBehaviourConveyorServiceImpl  - Removed Route Route: [11, 21] from cacheOfRoutes on Sat Jun 02 23:26:48 CEST 2018 after timeinterval 2049 ms
-2444 [Thread-2] INFO  be.kdg.bhs.organizer.services.InMemoryBehaviourConveyorServiceImpl  - Removed Route Route: [1, 61, 91, 22]Route: [1, 87, 22] from cacheOfRoutes on Sat Jun 02 23:26:48 CEST 2018 after timeinterval 2062 ms
-3890 [main] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered: routeInformation(1,22)
-3996 [main] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Added route 1-22 to cacheOfRoutes
-3996 [main] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - End routeInformation(1,22) returned routes Route: [1, 73, 22]Route: [1, 96, 97, 65, 22]Route: [1, 96, 22]Route: [1, 89, 60, 52, 22]
-0    [Thread-0] INFO  InMemoryBehaviourTestServiceImpl  - Removed suitcase 1 from cacheOfSuitcases on Sat Jun 02 23:29:22 CEST 2018 after timeinterval 4014 ms
-1005 [Thread-0] INFO  InMemoryBehaviourTestServiceImpl  - Removed suitcase 2 from cacheOfSuitcases on Sat Jun 02 23:29:23 CEST 2018 after timeinterval 4007 ms
-2007 [Thread-0] INFO  InMemoryBehaviourTestServiceImpl  - Removed suitcase 3 from cacheOfSuitcases on Sat Jun 02 23:29:24 CEST 2018 after timeinterval 4008 ms
-9028 [Thread-0] INFO  InMemoryBehaviourTestServiceImpl  - Removed suitcase 1 from cacheOfSuitcases on Sat Jun 02 23:29:31 CEST 2018 after timeinterval 4017 ms
+0    [Thread-2] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Entered: publishMessage()
+739  [Thread-2] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering marshalMessage( Id 1
+ Flightnumber 1111111
+ ConveyorId 11
+ Date 2018-06-03 01:36:08.672
+)
+798  [Thread-2] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - End marshalMessage( Id 1
+ Flightnumber 1111111
+ ConveyorId 11
+ Date 2018-06-03 01:36:08.672
+) with result <?xml version="1.0" encoding="UTF-8" standalone="yes"?><suitcasemessage><conveyorId>11</conveyorId><date>2018-06-03T01:36:08.672+02:00</date><flightNumber>1111111</flightNumber><suitcaseId>1</suitcaseId></suitcasemessage>
+921  [pool-2-thread-4] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue suitcaseQueue
+921  [pool-2-thread-4] DEBUG be.kdg.bhs.organizer.jms.ConsumerLogic  - Entered: consumeMessage(<?xml version="1.0" encoding="UTF-8" standalone="yes"?><suitcasemessage><conveyorId>11</conveyorId><date>2018-06-03T01:36:08.672+02:00</date><flightNumber>1111111</flightNumber><suitcaseId>1</suitcaseId></suitcasemessage>) 
+954  [pool-2-thread-4] DEBUG be.kdg.bhs.organizer.services.RoutingService  - Entered: onReceiveSuitcaseMessage(): Suitcase 1 is being processed
+955  [pool-2-thread-4] DEBUG be.kdg.bhs.organizer.api.FlightService  - Entered: flightservice(1111111)
+955  [pool-2-thread-4] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1111111)
+1063 [Thread-2] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - End: publishMessage() with published message 
+1063 [Thread-2] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Entered: publishMessage()
+1099 [pool-2-thread-4] INFO  be.kdg.bhs.organizer.api.FlightService  - End flightservice(1111111) with boardingConveyor 41
+1099 [pool-2-thread-4] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered: routeInformation(11,41)
+1209 [pool-2-thread-4] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Added route 11-41 to cacheOfRoutes
+1211 [pool-2-thread-4] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - End routeInformation(11,41) returned routes Route: [11, 21, 41]
+1212 [pool-2-thread-4] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - Entered: nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@4d7d937d,11)
+1218 [pool-2-thread-4] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - End: nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@4d7d937d,11) with the optimalroute Route: [11, 21, 41] and nextconveyor 21
+1219 [pool-2-thread-4] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Entered: publishMessage()
+1738 [Thread-2] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering marshalMessage( Id 2
+ Flightnumber 1111112
+ ConveyorId 12
+ Date 2018-06-03 01:36:08.672
+)
+1745 [Thread-2] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - End marshalMessage( Id 2
+ Flightnumber 1111112
+ ConveyorId 12
+ Date 2018-06-03 01:36:08.672
+) with result <?xml version="1.0" encoding="UTF-8" standalone="yes"?><suitcasemessage><conveyorId>12</conveyorId><date>2018-06-03T01:36:08.672+02:00</date><flightNumber>1111112</flightNumber><suitcaseId>2</suitcaseId></suitcasemessage>
+1931 [pool-2-thread-4] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering marshalMessage(be.kdg.bhs.organizer.dto.RouteMessageDTO@7de4576c)
+1935 [pool-2-thread-4] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - End marshalMessage(be.kdg.bhs.organizer.dto.RouteMessageDTO@7de4576c) with result <?xml version="1.0" encoding="UTF-8" standalone="yes"?><routeMessage><bagageID>1</bagageID><conveyorID>21</conveyorID></routeMessage>
+1981 [Thread-2] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - End: publishMessage() with published message 
+1981 [Thread-2] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Entered: publishMessage()
+2192 [pool-2-thread-4] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - End: publishMessage() with published message 
+2192 [pool-2-thread-4] DEBUG be.kdg.bhs.organizer.services.RoutingService  - End: onReceiveSuitcaseMessage(): Suitcase 1 
+
+2192 [pool-2-thread-4] DEBUG be.kdg.bhs.organizer.jms.ConsumerLogic  - End: consumeMessage() 
+2193 [pool-2-thread-5] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue suitcaseQueue
+2193 [pool-2-thread-5] DEBUG be.kdg.bhs.organizer.jms.ConsumerLogic  - Entered: consumeMessage(<?xml version="1.0" encoding="UTF-8" standalone="yes"?><suitcasemessage><conveyorId>12</conveyorId><date>2018-06-03T01:36:08.672+02:00</date><flightNumber>1111112</flightNumber><suitcaseId>2</suitcaseId></suitcasemessage>) 
+2205 [pool-2-thread-5] DEBUG be.kdg.bhs.organizer.services.RoutingService  - Entered: onReceiveSuitcaseMessage(): Suitcase 2 is being processed
+2205 [pool-2-thread-5] DEBUG be.kdg.bhs.organizer.api.FlightService  - Entered: flightservice(1111112)
+2205 [pool-2-thread-5] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1111112)
+2309 [pool-2-thread-5] INFO  be.kdg.bhs.organizer.api.FlightService  - End flightservice(1111112) with boardingConveyor 42
+2309 [pool-2-thread-5] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered: routeInformation(12,42)
+2412 [pool-2-thread-5] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Added route 12-42 to cacheOfRoutes
+2412 [pool-2-thread-5] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - End routeInformation(12,42) returned routes Route: [12, 22, 42]
+2412 [pool-2-thread-5] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - Entered: nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@7556dffd,12)
+2412 [pool-2-thread-5] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - End: nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@7556dffd,12) with the optimalroute Route: [12, 22, 42] and nextconveyor 22
+2412 [pool-2-thread-5] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Entered: publishMessage()
+2645 [Thread-2] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering marshalMessage( Id 3
+ Flightnumber 1111113
+ ConveyorId 11
+ Date 2018-06-03 01:36:08.672
+)
+2652 [Thread-2] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - End marshalMessage( Id 3
+ Flightnumber 1111113
+ ConveyorId 11
+ Date 2018-06-03 01:36:08.672
+) with result <?xml version="1.0" encoding="UTF-8" standalone="yes"?><suitcasemessage><conveyorId>11</conveyorId><date>2018-06-03T01:36:08.672+02:00</date><flightNumber>1111113</flightNumber><suitcaseId>3</suitcaseId></suitcasemessage>
+2881 [Thread-2] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - End: publishMessage() with published message 
+2881 [Thread-2] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Entered: publishMessage()
+3080 [pool-2-thread-5] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering marshalMessage(be.kdg.bhs.organizer.dto.RouteMessageDTO@7780096f)
+3086 [pool-2-thread-5] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - End marshalMessage(be.kdg.bhs.organizer.dto.RouteMessageDTO@7780096f) with result <?xml version="1.0" encoding="UTF-8" standalone="yes"?><routeMessage><bagageID>2</bagageID><conveyorID>22</conveyorID></routeMessage>
+3318 [pool-2-thread-5] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - End: publishMessage() with published message 
+3321 [pool-2-thread-5] DEBUG be.kdg.bhs.organizer.services.RoutingService  - End: onReceiveSuitcaseMessage(): Suitcase 2 
+
+3322 [pool-2-thread-5] DEBUG be.kdg.bhs.organizer.jms.ConsumerLogic  - End: consumeMessage() 
+3322 [pool-2-thread-6] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue suitcaseQueue
+3323 [pool-2-thread-6] DEBUG be.kdg.bhs.organizer.jms.ConsumerLogic  - Entered: consumeMessage(<?xml version="1.0" encoding="UTF-8" standalone="yes"?><suitcasemessage><conveyorId>11</conveyorId><date>2018-06-03T01:36:08.672+02:00</date><flightNumber>1111113</flightNumber><suitcaseId>3</suitcaseId></suitcasemessage>) 
+3333 [pool-2-thread-6] DEBUG be.kdg.bhs.organizer.services.RoutingService  - Entered: onReceiveSuitcaseMessage(): Suitcase 3 is being processed
+3333 [pool-2-thread-6] DEBUG be.kdg.bhs.organizer.api.FlightService  - Entered: flightservice(1111113)
+3333 [pool-2-thread-6] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1111113)
+3436 [pool-2-thread-6] INFO  be.kdg.bhs.organizer.api.FlightService  - End flightservice(1111113) with boardingConveyor 45
+3436 [pool-2-thread-6] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered: routeInformation(11,45)
+3540 [pool-2-thread-6] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Added route 11-45 to cacheOfRoutes
+3540 [pool-2-thread-6] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - End routeInformation(11,45) returned routes Route: [11, 98, 53, 45]Route: [11, 85, 45]
+3540 [pool-2-thread-6] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - Entered: nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@35feecad,11)
+3541 [pool-2-thread-6] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - End: nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@35feecad,11) with the optimalroute Route: [11, 85, 45] and nextconveyor 85
+3541 [pool-2-thread-6] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Entered: publishMessage()
+3553 [Thread-2] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering marshalMessage( Id 4
+ Flightnumber 1111112
+ ConveyorId 11
+ Date 2018-06-03 01:36:08.672
+)
+3568 [Thread-2] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - End marshalMessage( Id 4
+ Flightnumber 1111112
+ ConveyorId 11
+ Date 2018-06-03 01:36:08.672
+) with result <?xml version="1.0" encoding="UTF-8" standalone="yes"?><suitcasemessage><conveyorId>11</conveyorId><date>2018-06-03T01:36:08.672+02:00</date><flightNumber>1111112</flightNumber><suitcaseId>4</suitcaseId></suitcasemessage>
+3805 [Thread-2] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - End: publishMessage() with published message 
+4237 [pool-2-thread-6] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering marshalMessage(be.kdg.bhs.organizer.dto.RouteMessageDTO@294e03b)
+4241 [pool-2-thread-6] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - End marshalMessage(be.kdg.bhs.organizer.dto.RouteMessageDTO@294e03b) with result <?xml version="1.0" encoding="UTF-8" standalone="yes"?><routeMessage><bagageID>3</bagageID><conveyorID>85</conveyorID></routeMessage>
+4309 [Thread-2] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Entered: publishMessage()
+4478 [pool-2-thread-6] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - End: publishMessage() with published message 
+4478 [pool-2-thread-6] DEBUG be.kdg.bhs.organizer.services.RoutingService  - End: onReceiveSuitcaseMessage(): Suitcase 3 
+
+4478 [pool-2-thread-6] DEBUG be.kdg.bhs.organizer.jms.ConsumerLogic  - End: consumeMessage() 
+4479 [pool-2-thread-7] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue suitcaseQueue
+4479 [pool-2-thread-7] DEBUG be.kdg.bhs.organizer.jms.ConsumerLogic  - Entered: consumeMessage(<?xml version="1.0" encoding="UTF-8" standalone="yes"?><suitcasemessage><conveyorId>11</conveyorId><date>2018-06-03T01:36:08.672+02:00</date><flightNumber>1111112</flightNumber><suitcaseId>4</suitcaseId></suitcasemessage>) 
+4489 [pool-2-thread-7] DEBUG be.kdg.bhs.organizer.services.RoutingService  - Entered: onReceiveSuitcaseMessage(): Suitcase 4 is being processed
+4489 [pool-2-thread-7] DEBUG be.kdg.bhs.organizer.api.FlightService  - Entered: flightservice(1111112)
+4490 [pool-2-thread-7] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1111112)
+4595 [pool-2-thread-7] INFO  be.kdg.bhs.organizer.api.FlightService  - End flightservice(1111112) with boardingConveyor 42
+4595 [pool-2-thread-7] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered: routeInformation(11,42)
+4696 [pool-2-thread-7] ERROR be.kdg.bhs.organizer.services.RoutingService  - Unexpected error during call of conveyorservice: JSONObject["routes"] not found.. Attempting a recursive call for suitcase 4
+4696 [pool-2-thread-7] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered: routeInformation(11,42)
+4801 [pool-2-thread-7] ERROR be.kdg.bhs.organizer.services.RoutingService  - Unexpected error during call of conveyorservice: JSONObject["routes"] not found.. Attempting a recursive call for suitcase 4
+4802 [pool-2-thread-7] ERROR be.kdg.bhs.organizer.services.RoutingService  - Error while processing suitcase with id 4 and errormessage JSONObject["routes"] not found.
+4803 [pool-2-thread-7] DEBUG be.kdg.bhs.organizer.services.RoutingService  - Entered: sendStatusMessage(Status: Undeliverable  Suitcase: 4 Conveyor: 11)
+4803 [pool-2-thread-7] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Entered: publishMessage()
+4998 [Thread-2] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering marshalMessage(be.kdg.bhs.organizer.dto.SensorMessageDTO@7b96abfd)
+5006 [Thread-2] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - End marshalMessage(be.kdg.bhs.organizer.dto.SensorMessageDTO@7b96abfd) with result <?xml version="1.0" encoding="UTF-8" standalone="yes"?><sensormessage><conveyorId>21</conveyorId><date>2018-06-03T01:36:08.672+02:00</date><suitcaseId>1</suitcaseId></sensormessage>
+5121 [pool-5-thread-4] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue sensorMessageQueue
+5121 [pool-5-thread-4] DEBUG be.kdg.bhs.organizer.jms.ConsumerLogic  - Entered: consumeMessage(<?xml version="1.0" encoding="UTF-8" standalone="yes"?><sensormessage><conveyorId>21</conveyorId><date>2018-06-03T01:36:08.672+02:00</date><suitcaseId>1</suitcaseId></sensormessage>) 
+5128 [pool-5-thread-4] DEBUG be.kdg.bhs.organizer.services.RoutingService  - Entered: onReceiveSensorMessage(): SensorMessage for suitcase 1 is being processed
+5128 [pool-5-thread-4] DEBUG be.kdg.bhs.organizer.api.FlightService  - Entered: flightservice(1111111)
+5128 [pool-5-thread-4] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1111111)
+5232 [pool-5-thread-4] INFO  be.kdg.bhs.organizer.api.FlightService  - End flightservice(1111111) with boardingConveyor 41
+5232 [pool-5-thread-4] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered: routeInformation(21,41)
+5248 [Thread-2] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - End: publishMessage() with published message 
+5248 [Thread-2] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Entered: publishMessage()
+5333 [pool-5-thread-4] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Added route 21-41 to cacheOfRoutes
+5333 [pool-5-thread-4] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - End routeInformation(21,41) returned routes Route: [21, 41]
+5333 [pool-5-thread-4] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - Entered: nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@57bc8a46,21)
+5333 [pool-5-thread-4] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - End: nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@57bc8a46,21) with the optimalroute Route: [21, 41] and nextconveyor 41
+5333 [pool-5-thread-4] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Entered: publishMessage()
+5522 [pool-2-thread-7] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering marshalMessage(be.kdg.bhs.organizer.dto.StatusMessageDTO@2b4bf9a2)
+5529 [pool-2-thread-7] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - End marshalMessage(be.kdg.bhs.organizer.dto.StatusMessageDTO@2b4bf9a2) with result <?xml version="1.0" encoding="UTF-8" standalone="yes"?><statusMessage><conveyorId>11</conveyorId><status>UNDELIVERABLE</status><suitcaseId>4</suitcaseId></statusMessage>
+5777 [pool-2-thread-7] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - End: publishMessage() with published message 
+5777 [pool-2-thread-7] DEBUG be.kdg.bhs.organizer.services.RoutingService  - End: sendStatusMessage(Status: Undeliverable  Suitcase: 4 Conveyor: 11) 
+
+5778 [pool-2-thread-7] DEBUG be.kdg.bhs.organizer.services.RoutingService  - End: onReceiveSuitcaseMessage(): Suitcase 4 
+
+5778 [pool-2-thread-7] DEBUG be.kdg.bhs.organizer.jms.ConsumerLogic  - End: consumeMessage() 
+5950 [Thread-2] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering marshalMessage(be.kdg.bhs.organizer.dto.SensorMessageDTO@31559661)
+5955 [Thread-2] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - End marshalMessage(be.kdg.bhs.organizer.dto.SensorMessageDTO@31559661) with result <?xml version="1.0" encoding="UTF-8" standalone="yes"?><sensormessage><conveyorId>22</conveyorId><date>2018-06-03T01:36:08.672+02:00</date><suitcaseId>2</suitcaseId></sensormessage>
+6013 [pool-5-thread-4] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering marshalMessage(be.kdg.bhs.organizer.dto.RouteMessageDTO@4cb8423e)
+6017 [pool-5-thread-4] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - End marshalMessage(be.kdg.bhs.organizer.dto.RouteMessageDTO@4cb8423e) with result <?xml version="1.0" encoding="UTF-8" standalone="yes"?><routeMessage><bagageID>1</bagageID><conveyorID>41</conveyorID></routeMessage>
+6208 [Thread-2] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - End: publishMessage() with published message 
+6208 [Thread-2] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Entered: publishMessage()
+6261 [pool-5-thread-4] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - End: publishMessage() with published message 
+6261 [pool-5-thread-4] DEBUG be.kdg.bhs.organizer.services.RoutingService  - End: onReceiveSensorMessage(): SensorMessage for suitcase 1 
+
+6261 [pool-5-thread-4] DEBUG be.kdg.bhs.organizer.jms.ConsumerLogic  - End: consumeMessage() 
+6261 [pool-5-thread-5] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue sensorMessageQueue
+6261 [pool-5-thread-5] DEBUG be.kdg.bhs.organizer.jms.ConsumerLogic  - Entered: consumeMessage(<?xml version="1.0" encoding="UTF-8" standalone="yes"?><sensormessage><conveyorId>22</conveyorId><date>2018-06-03T01:36:08.672+02:00</date><suitcaseId>2</suitcaseId></sensormessage>) 
+6266 [pool-5-thread-5] DEBUG be.kdg.bhs.organizer.services.RoutingService  - Entered: onReceiveSensorMessage(): SensorMessage for suitcase 2 is being processed
+6266 [pool-5-thread-5] DEBUG be.kdg.bhs.organizer.api.FlightService  - Entered: flightservice(1111112)
+6266 [pool-5-thread-5] INFO  be.kdg.bhs.organizer.api.FlightService  - Entering flightInFormation(1111112)
+6370 [pool-5-thread-5] INFO  be.kdg.bhs.organizer.api.FlightService  - End flightservice(1111112) with boardingConveyor 42
+6370 [pool-5-thread-5] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Entered: routeInformation(22,42)
+6474 [pool-5-thread-5] INFO  be.kdg.bhs.organizer.services.ConveyorServiceImpl  - Added route 22-42 to cacheOfRoutes
+6474 [pool-5-thread-5] DEBUG be.kdg.bhs.organizer.services.ConveyorServiceImpl  - End routeInformation(22,42) returned routes Route: [22, 42]
+6474 [pool-5-thread-5] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - Entered: nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@30121143,22)
+6474 [pool-5-thread-5] DEBUG be.kdg.bhs.organizer.api.CalculateRouteService  - End: nextConveyorInRoute(be.kdg.bhs.organizer.model.Routes@30121143,22) with the optimalroute Route: [22, 42] and nextconveyor 42
+6474 [pool-5-thread-5] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Entered: publishMessage()
+6882 [Thread-2] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering marshalMessage(be.kdg.bhs.organizer.dto.SensorMessageDTO@26f1bcfc)
+6887 [Thread-2] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - End marshalMessage(be.kdg.bhs.organizer.dto.SensorMessageDTO@26f1bcfc) with result <?xml version="1.0" encoding="UTF-8" standalone="yes"?><sensormessage><conveyorId>44</conveyorId><date>2018-06-03T01:36:08.672+02:00</date><suitcaseId>4</suitcaseId></sensormessage>
+7117 [Thread-2] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - End: publishMessage() with published message 
+7140 [pool-5-thread-5] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering marshalMessage(be.kdg.bhs.organizer.dto.RouteMessageDTO@2b165bf7)
+7144 [pool-5-thread-5] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - End marshalMessage(be.kdg.bhs.organizer.dto.RouteMessageDTO@2b165bf7) with result <?xml version="1.0" encoding="UTF-8" standalone="yes"?><routeMessage><bagageID>2</bagageID><conveyorID>42</conveyorID></routeMessage>
+7374 [pool-5-thread-5] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - End: publishMessage() with published message 
+7375 [pool-5-thread-5] DEBUG be.kdg.bhs.organizer.services.RoutingService  - End: onReceiveSensorMessage(): SensorMessage for suitcase 2 
+
+7375 [pool-5-thread-5] DEBUG be.kdg.bhs.organizer.jms.ConsumerLogic  - End: consumeMessage() 
+7375 [pool-5-thread-6] INFO  be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Received message from RabbitMQConsumer queue sensorMessageQueue
+7375 [pool-5-thread-6] DEBUG be.kdg.bhs.organizer.jms.ConsumerLogic  - Entered: consumeMessage(<?xml version="1.0" encoding="UTF-8" standalone="yes"?><sensormessage><conveyorId>44</conveyorId><date>2018-06-03T01:36:08.672+02:00</date><suitcaseId>4</suitcaseId></sensormessage>) 
+7380 [pool-5-thread-6] DEBUG be.kdg.bhs.organizer.services.RoutingService  - Entered: onReceiveSensorMessage(): SensorMessage for suitcase 4 is being processed
+7380 [pool-5-thread-6] DEBUG be.kdg.bhs.organizer.services.RoutingService  - Entered: sendStatusMessage(Status: Lost  Suitcase: 4 Conveyor: 44)
+7380 [pool-5-thread-6] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Entered: publishMessage()
+7621 [Thread-2] DEBUG be.kdg.bhs.organizer.jms.RabbitMQConsumer  - Entered: publishMessage()
+8063 [pool-5-thread-6] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - Entering marshalMessage(be.kdg.bhs.organizer.dto.StatusMessageDTO@2bd59da7)
+8075 [pool-5-thread-6] INFO  be.kdg.bhs.organizer.services.JAXBFormatterServiceImpl  - End marshalMessage(be.kdg.bhs.organizer.dto.StatusMessageDTO@2bd59da7) with result <?xml version="1.0" encoding="UTF-8" standalone="yes"?><statusMessage><conveyorId>44</conveyorId><status>LOST</status><suitcaseId>4</suitcaseId></statusMessage>

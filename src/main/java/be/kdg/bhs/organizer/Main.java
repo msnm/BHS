@@ -74,8 +74,24 @@ public class Main {
          * RoutingService is like a controller and fungates as a callback when a message is read from a queue.
          */
         RoutingService routingService = new RoutingService(messageConsumerServiceList,messageProducerList,formatterService,
-                flightService,conveyorService,calculateRouteService,60000,200);
+                flightService,conveyorService,calculateRouteService,10000,200);
+
+        /**
+         * Running the mock Simulator in a different thread. This simulators puts SuitcaseMessages and
+         * SensorMessages on a queue.
+         * Suitcase 1 and 2 should receive statusMessaeg ARRIVED  (see console for output)
+         * Suitcase 3 should be lost, because there are no sensormessages after a time defined in expireTimeCacheOfSuitcases
+         * Suitcase 4 is undeliverable. This simulates an error thrown by the conveyor service. In the log you can see
+         * that the conveyor service is called twice (two attempts) before sending the message UNDELIVERABLE.
+         */
+        Thread thread = new Thread(() -> {
+            new SimulatorMockService().start();
+        });
+        thread.setDaemon(true);
+        thread.start();
+
         routingService.start();
 
     }
+
 }

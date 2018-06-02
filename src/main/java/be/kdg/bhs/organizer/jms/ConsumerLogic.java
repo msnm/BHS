@@ -20,7 +20,7 @@ public class ConsumerLogic {
     }
 
     public void consumeMessage(MessageConsumerListener messageConsumerListener, MessageFormatterService formatter, String message, Class aClass) {
-        logger.debug("Entered: consumeMessage() ");
+        logger.debug("Entered: consumeMessage({}) ",message);
         try {
             if (messageConsumerListener != null) {
                 if (aClass.equals((new SuitcaseMessageDTO()).getClass())) {

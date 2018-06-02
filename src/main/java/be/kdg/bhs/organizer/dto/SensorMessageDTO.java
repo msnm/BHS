@@ -20,6 +20,11 @@ public class SensorMessageDTO {
     public SensorMessageDTO() {
     }
 
+    public SensorMessageDTO(Integer suitcaseId, Integer conveyorId, Timestamp date) {
+        this.suitcaseId = suitcaseId;
+        this.conveyorId = conveyorId;
+        this.date = date;
+    }
 
     public Integer getSuitcaseId() {
         return suitcaseId;

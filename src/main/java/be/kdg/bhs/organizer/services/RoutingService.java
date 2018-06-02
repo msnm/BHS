@@ -127,6 +127,10 @@ public class RoutingService implements MessageConsumerListener {
     @Override
     public void sendStatusMessage(StatusMessage statusMessage) {
         logger.debug("Entered: sendStatusMessage({})",statusMessage.toString());
+
+        if (statusMessage.getStatus().equals(Status.UNDELIVERABLE)) {
+            cacheOfSuitcases.removeCacheObject(statusMessage.getSuitcaseId());
+        }
         messageProducerServices.get(0).publishMessage(EOtoDTO.StatusMessageToStatusMessageDTO(statusMessage),messageFormatterService);
         logger.debug("End: sendStatusMessage({}) {}",statusMessage.toString(),"\n");
     }

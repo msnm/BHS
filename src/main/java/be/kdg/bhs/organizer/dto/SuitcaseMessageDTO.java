@@ -20,6 +20,13 @@ public class SuitcaseMessageDTO {
 
     private Timestamp date;
 
+    public SuitcaseMessageDTO(Integer suitcaseId, Integer flightNumber, Integer conveyorId, Timestamp date) {
+        this.suitcaseId = suitcaseId;
+        this.flightNumber = flightNumber;
+        this.conveyorId = conveyorId;
+        this.date = date;
+    }
+
     public SuitcaseMessageDTO() {
     }
 

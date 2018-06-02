@@ -2,6 +2,7 @@ package be.kdg.bhs.organizer.dto;
 
 import be.kdg.bhs.organizer.model.Status;
 
+import javax.xml.bind.annotation.XmlAccessorOrder;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
