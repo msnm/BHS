@@ -79,8 +79,8 @@ public class Main {
         /**
          * Running the mock Simulator in a different thread. This simulators puts SuitcaseMessages and
          * SensorMessages on a queue.
-         * Suitcase 1 and 2 should receive statusMessaeg ARRIVED  (see console for output)
-         * Suitcase 3 should be lost, because there are no sensormessages after a time defined in expireTimeCacheOfSuitcases
+         * Suitcase 1 and 2 and 5 should receive statusMessaeg ARRIVED  (see console for output)
+         * Suitcase 3 should be lost, because there are no sensormessages after a while defined in expireTimeCacheOfSuitcases
          * Suitcase 4 is undeliverable. This simulates an error thrown by the conveyor service. In the log you can see
          * that the conveyor service is called twice (two attempts) before sending the message UNDELIVERABLE.
          */

@@ -79,6 +79,7 @@ public class ConveyorServiceImpl implements ConveyorService {
     private RouteDTO checkIfRouteInfoIsCached(Integer conveyorId, Integer boardingConveyorId) {
         CacheObject<RouteDTO> routeDTOCache = cacheOfRoutes.getCacheObject(makeKey(conveyorId,boardingConveyorId));
         if ( routeDTOCache !=null) {
+            logger.info("Retrieved route out of cache: {} ",routeDTOCache.getCacheObject().toString());
             return routeDTOCache.getCacheObject();
         }
        return null;

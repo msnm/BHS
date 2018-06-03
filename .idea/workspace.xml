@@ -2,12 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46950a51-c30c-456c-b6d6-afb1275bbbc2" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/logging/log.txt" afterPath="$PROJECT_DIR$/logging/log.txt" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/be/kdg/bhs/organizer/Main.class" afterPath="$PROJECT_DIR$/out/production/classes/be/kdg/bhs/organizer/Main.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/be/kdg/bhs/organizer/SimulatorMockService$1.class" afterPath="$PROJECT_DIR$/out/production/classes/be/kdg/bhs/organizer/SimulatorMockService$1.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/be/kdg/bhs/organizer/SimulatorMockService.class" afterPath="$PROJECT_DIR$/out/production/classes/be/kdg/bhs/organizer/SimulatorMockService.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/be/kdg/bhs/organizer/dto/RouteMessageDTO.class" afterPath="$PROJECT_DIR$/out/production/classes/be/kdg/bhs/organizer/dto/RouteMessageDTO.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/be/kdg/bhs/organizer/services/ConveyorServiceImpl.class" afterPath="$PROJECT_DIR$/out/production/classes/be/kdg/bhs/organizer/services/ConveyorServiceImpl.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/be/kdg/bhs/organizer/services/RoutingService.class" afterPath="$PROJECT_DIR$/out/production/classes/be/kdg/bhs/organizer/services/RoutingService.class" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/Main.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/Main.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/dto/SensorMessageDTO.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/dto/SensorMessageDTO.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/dto/StatusMessageDTO.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/dto/StatusMessageDTO.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/dto/SuitcaseMessageDTO.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/dto/SuitcaseMessageDTO.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/jms/ConsumerLogic.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/jms/ConsumerLogic.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/SimulatorMockService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/SimulatorMockService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/dto/RouteMessageDTO.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/dto/RouteMessageDTO.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/services/ConveyorServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/services/ConveyorServiceImpl.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/services/RoutingService.java" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/services/RoutingService.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -30,8 +36,8 @@
       <file leaf-file-name="RoutingService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/services/RoutingService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="131" column="76" lean-forward="false" selection-start-line="131" selection-start-column="76" selection-end-line="131" selection-end-column="76" />
+            <state relative-caret-position="1535">
+              <caret line="130" column="0" lean-forward="false" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -42,8 +48,8 @@
       <file leaf-file-name="SimulatorMockService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/SimulatorMockService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="34" column="85" lean-forward="true" selection-start-line="34" selection-start-column="85" selection-end-line="34" selection-end-column="85" />
+            <state relative-caret-position="-161">
+              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -75,16 +81,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SensorMessageDTO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/dto/SensorMessageDTO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="22" column="85" lean-forward="false" selection-start-line="22" selection-start-column="85" selection-end-line="22" selection-end-column="85" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ConsumerLogic.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/jms/ConsumerLogic.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -97,7 +93,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InMemoryCache.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="log.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/logging/log.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="206" column="28" lean-forward="false" selection-start-line="206" selection-start-column="23" selection-end-line="206" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConveyorServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/services/ConveyorServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="281">
+              <caret line="81" column="60" lean-forward="false" selection-start-line="81" selection-start-column="60" selection-end-line="81" selection-end-column="60" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RouteMessageDTO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/dto/RouteMessageDTO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="40">
+              <caret line="13" column="30" lean-forward="false" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InMemoryCache.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/repo/InMemoryCache.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="372">
@@ -119,21 +145,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="84" column="109" lean-forward="false" selection-start-line="84" selection-start-column="109" selection-end-line="84" selection-end-column="109" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SuitcaseMessageDTO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/dto/SuitcaseMessageDTO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="22" column="109" lean-forward="false" selection-start-line="22" selection-start-column="109" selection-end-line="22" selection-end-column="109" />
+            <state relative-caret-position="342">
+              <caret line="82" column="87" lean-forward="false" selection-start-line="82" selection-start-column="87" selection-end-line="82" selection-end-column="87" />
               <folding />
             </state>
           </provider>
@@ -158,6 +174,9 @@
       <find>ƒ</find>
       <find>Suitcase 2</find>
       <find>1111113</find>
+      <find>UNDELivERA</find>
+      <find>Suitcase 4</find>
+      <find>ERROR</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -551,7 +570,6 @@
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/dto/DTOtoEO.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/dto/EOtoDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/dto/RouteDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/dto/RouteMessageDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/dto/TimestampAdapter.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/exceptions/ConveyorServiceException.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/exceptions/RoutingException.java" />
@@ -564,7 +582,6 @@
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/model/Suitcase.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/api/CalculateRouteService.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/services/FlightServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/services/ConveyorServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/services/InMemoryBehaviourConveyorServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/services/InMemoryBehaviourRouteServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/services/JAXBFormatterServiceImpl.java" />
@@ -575,10 +592,12 @@
         <option value="$PROJECT_DIR$/src/main/java/SimulatorMockService.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/dto/StatusMessageDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/jms/ConsumerLogic.java" />
-        <option value="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/SimulatorMockService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/services/RoutingService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/dto/RouteMessageDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/services/ConveyorServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/SimulatorMockService.java" />
         <option value="$PROJECT_DIR$/logging/log.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/Main.java" />
       </list>
     </option>
   </component>
@@ -950,7 +969,7 @@
       <workItem from="1527452694009" duration="2987000" />
       <workItem from="1527766955645" duration="17701000" />
       <workItem from="1527793169648" duration="9519000" />
-      <workItem from="1527963966571" duration="17720000" />
+      <workItem from="1527963966571" duration="19499000" />
     </task>
     <servers />
   </component>
@@ -987,7 +1006,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133103000" />
+    <option name="totallyTimeSpent" value="134882000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1002,11 +1021,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22443181" sideWeight="0.503231" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5198864" sideWeight="0.49676898" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47301137" sideWeight="0.49676898" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26979" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.226979" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1092,8 +1111,20 @@
           <properties />
           <option name="timeStamp" value="23" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/services/RoutingService.java</url>
+          <line>130</line>
+          <properties />
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/services/ConveyorServiceImpl.java</url>
+          <line>79</line>
+          <properties />
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="25" />
+      <option name="time" value="29" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1224,14 +1255,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="22" lean-forward="false" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/dto/RouteMessageDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="48" lean-forward="false" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
           <folding />
         </state>
       </provider>
@@ -1430,14 +1453,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/services/ConveyorServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="41" column="9" lean-forward="true" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/jms/RabbitMQProducer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-69">
@@ -1502,28 +1517,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/SimulatorMockService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/repo/InMemoryCache.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="34" column="85" lean-forward="true" selection-start-line="34" selection-start-column="85" selection-end-line="34" selection-end-column="85" />
+        <state relative-caret-position="372">
+          <caret line="87" column="11" lean-forward="true" selection-start-line="78" selection-start-column="9" selection-end-line="87" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/dto/RouteMessageDTO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="84" column="109" lean-forward="false" selection-start-line="84" selection-start-column="109" selection-end-line="84" selection-end-column="109" />
+        <state relative-caret-position="40">
+          <caret line="13" column="30" lean-forward="false" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/services/RoutingService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="131" column="76" lean-forward="false" selection-start-line="131" selection-start-column="76" selection-end-line="131" selection-end-column="76" />
+        <state relative-caret-position="1535">
+          <caret line="130" column="0" lean-forward="false" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/services/ConveyorServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="81" column="60" lean-forward="false" selection-start-line="81" selection-start-column="60" selection-end-line="81" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/SimulatorMockService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-161">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1532,19 +1565,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/logging/log.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="160">
+          <caret line="206" column="28" lean-forward="false" selection-start-line="206" selection-start-column="23" selection-end-line="206" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/repo/InMemoryCache.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/kdg/bhs/organizer/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="87" column="11" lean-forward="true" selection-start-line="78" selection-start-column="9" selection-end-line="87" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="342">
+          <caret line="82" column="87" lean-forward="false" selection-start-line="82" selection-start-column="87" selection-end-line="82" selection-end-column="87" />
+          <folding />
         </state>
       </provider>
     </entry>

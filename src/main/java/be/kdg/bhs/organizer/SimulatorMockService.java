@@ -31,8 +31,13 @@ public class SimulatorMockService {
         SensorMessageDTO sensor22 = new SensorMessageDTO(2, 22, new Timestamp(System.currentTimeMillis()));
         SensorMessageDTO sensor42 = new SensorMessageDTO(2, 42, new Timestamp(System.currentTimeMillis()));
         SuitcaseMessageDTO suitcaseLost = new SuitcaseMessageDTO(3, 1111113, 11, new Timestamp(System.currentTimeMillis()));
-        SuitcaseMessageDTO suitcaseUndeliverable = new SuitcaseMessageDTO(4, 1111112, 11, new Timestamp(System.currentTimeMillis()));
+        SuitcaseMessageDTO suitcaseUndeliverable = new SuitcaseMessageDTO(4, 1111112, 12, new Timestamp(System.currentTimeMillis()));
         SensorMessageDTO sensor44Undeliverable = new SensorMessageDTO(4, 44, new Timestamp(System.currentTimeMillis()));
+
+        SuitcaseMessageDTO suitcase5 = new SuitcaseMessageDTO(5, 1111111, 11, new Timestamp(System.currentTimeMillis()));
+        SensorMessageDTO sensor21S5 = new SensorMessageDTO(5, 21, new Timestamp(System.currentTimeMillis()));
+        SensorMessageDTO sensor41S5 = new SensorMessageDTO(5, 41, new Timestamp(System.currentTimeMillis()));
+
         consumeAMessage(routeMessageQueue);
         consumeAMessage(statusMessageQueue);
 
@@ -42,13 +47,16 @@ public class SimulatorMockService {
             sendSuitcaseMessage(suitcase2);
             sendSuitcaseMessage(suitcaseLost);
             sendSuitcaseMessage(suitcaseUndeliverable);
+            sendSuitcaseMessage(suitcase5);
             Thread.sleep(500);
             sendSensorMessage(sensor21);
             sendSensorMessage(sensor22);
             sendSensorMessage(sensor44Undeliverable);
+            sendSensorMessage(sensor21S5);
             Thread.sleep(500);
             sendSensorMessage(sensor41);
             sendSensorMessage(sensor42);
+            sendSensorMessage(sensor41S5);
 
         } catch (InterruptedException e) {
             e.printStackTrace();
